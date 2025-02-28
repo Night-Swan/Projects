@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>School Page</title>
+	<link rel="stylesheet" href="styles/topicusAddSchool.css">
+	<link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script defer src="script/topicusViewSchoolDetails.js" type="module"></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="topicusAddSchool.html" class="active">School Management</a>
+			<a href="topicusadmindashboard.html">Dashboard</a>
+			<a href="topicusaddschooladmin.html">School Administrators</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div id="content_space" class="content">
+		<h1>View School</h1>
+		<div id="contact-form">
+			<form action="#" method="get">
+				<h2>School Details</h2>
+				<span class="field">
+					<label for="school-name">School Name:</label>
+					<input type="text" id="school-name" name="school-name" value="School Name" readonly>
+				</span>
+
+				<span class="field">
+					<label for="school-type">School Type:</label>
+					<input type="text" id="school-type" name="school-type" value="School Type" readonly>
+				</span>
+
+				<span class="field">
+					<label for="phone-number">Phone Number:</label>
+					<input type="text" id="phone-number" name="phone-number" value="Phone Number" readonly>
+				</span>
+
+				<span class="field">
+					<label for="e-mail">Email:</label>
+					<input type="text" id="e-mail" name="e-mail" value="Email" readonly>
+				</span>
+				<span class="field">
+					<label for="address-postalCode">School's Postal Code:</label>
+					<input type="text" id="address-postalCode" name="address-postalCode" value="School Address"
+						readonly>
+				</span>
+				<span class="field">
+					<label for="address-streetName">School's Street Name:</label>
+					<input type="text" id="address-streetName" name="address-streetName" value="School Address"
+						readonly>
+				</span>
+				<span class="field">
+					<label for="address-streetNumber">School's Street Number:</label>
+					<input type="text" id="address-streetNumber" name="address-streetNumber" value="School Address"
+						readonly>
+				</span>
+				<span class="field">
+					<label for="address-city">School's City:</label>
+					<input type="text" id="address-city" name="address-city" value="School Address" readonly>
+				</span>
+				<span class="field">
+					<label for="address-country">School's Country:</label>
+					<input type="text" id="address-country" name="address-country" value="School Address" readonly>
+				</span>
+
+				<span class="field">
+					<label for="address-phoneNumber">School's Phone Number:</label>
+					<input type="text" id="address-phoneNumber" name="address-phoneNumber" value="School Address"
+						readonly>
+				</span>
+
+				<button type="submit" class="submit-button" id="back-button"
+					onclick="() => { window.location.href = '/Topicus/topicusadmindashboard.html';}">Back</button>
+			</form>
+		</div>
+	</div>
+	<footer>Powered by Topicus</footer>
+	<script src="script/topicusViewSchoolDetails.js" type="module"></script>
+</body>
+<script type="module">
+	import {
+		checkPermissions
+	} from "./script/pagePermissionChecker.js";
+	window.addEventListener("load", () => {
+		if (!checkPermissions("TOPICUS_ADMIN")) {
+			window.location.href = '/Topicus/'
+			 
+			return;
+		}
+	});
+</script>
+
+</html>

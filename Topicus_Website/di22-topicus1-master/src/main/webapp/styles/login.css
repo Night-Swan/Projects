@@ -1,0 +1,35 @@
+@import 'applyForRegistration.css';
+
+article {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 3em;
+    padding: 0.1em 0;
+}
+
+hr {
+    display: inline-block;
+    position: absolute;
+    top: 0.7em;
+    width: 100%;
+    color: var(--button-color);
+    border: 1px solid var(--button-color);
+    border-radius: 0.3em;
+}
+
+#or {
+    margin: 0 auto;
+    padding: 0 0.3em;
+    z-index: 1;
+    width: fit-content;
+    text-align: center;
+    font-size: medium;
+    text-transform: uppercase;
+    background-color: var(--form-background-color);
+}
+
+.signup, .continue {
+    margin: 2em 0;
+    text-align: center;
+}

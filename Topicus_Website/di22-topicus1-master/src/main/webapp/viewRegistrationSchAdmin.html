@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Registration</title>
+	<link rel="stylesheet" href="styles/viewRegistration.css">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script defer type="module" src="script/schAdminManageRegistration.js"></script>
+	<script defer src="script/administratorUtils.js" type="module"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="script/doc-utils.js"></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="schoolPage.html">School Page</a>
+			<a href="schooladmindashboard.html" class="active">Dashboard</a>
+			<a href="viewSchoolForms.html">Forms</a>
+			<a href="registrationadmin.html">Create Form</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="content">
+		<div id="content_space">
+			<h1>View Registration</h1>
+			<div id="contact-form">
+				<form action="#" method="get">
+					<p>Student Details</p>
+					<span class="field">
+						<label for="s-firstname" id="firstname">Name:</label>
+						<input type="text" id="s-firstname" name="firstname" value="Alex" readonly>
+					</span>
+
+					<span class="field">
+						<label for="s-lastname">Surname:</label>
+						<input type="text" id="s-lastname" name="lastname" value="Condu" readonly>
+					</span>
+
+					<span class="field">
+						<label for="s-birth_date">Birth Date:</label>
+						<input type="text" id="s-birth_date" name="birth_date" value="14.02.2003" readonly>
+						<input type="text" id="s-birth_date" name="birth_date" value="14.02.2003" readonly>
+					</span>
+
+					<span class="field">
+						<label for="s-preferredname">Preferred Name:</label>
+						<input type="text" id="s-preferredname" name="preferredname" value="Alex" readonly>
+						<input type="text" id="s-preferredname" name="preferredname" value="Alex" readonly>
+					</span>
+
+					<span class="field">
+						<label for="s-bsn">BSN:</label>
+						<input type="text" id="s-bsn" name="bsn" value="324838776438" readonly>
+						<input type="text" id="s-bsn" name="bsn" value="324838776438" readonly>
+					</span>
+
+					<span class="field">
+						<label for="s-nationality">Nationality:</label>
+						<input type="text" id="s-nationality" name="nationality" value="Romanian" readonly>
+						<input type="text" id="s-nationality" name="nationality" value="Romanian" readonly>
+					</span>
+
+					<p>Parent/Guardian Details</p>
+					<span class="field">
+						<label for="firstname">Name:</label>
+						<input type="text" id="p-firstname" name="firstname" value="Stefan" readonly>
+					</span>
+
+					<span class="field">
+						<label for="lastname">Surname:</label>
+						<input type="text" id="p-lastname" name="lastname" value="Condu" readonly>
+					</span>
+
+					<span class="field">
+						<label for="email">Email:</label>
+						<input type="text" id="p-email" name="email" value="test@condu.com" readonly>
+					</span>
+
+					<span class="field">
+						<label for="nationality">Nationality:</label>
+						<input type="text" id="s-nationality" name="nationality" value="Romanian" readonly>
+					</span>
+					<span class="field">
+						<label for="phoneno">Phone Number:</label>
+						<input type="text" id="s-phoneno" name="phoneno" value="+405674345" readonly>
+					</span>
+
+					<span class="field">
+						<label for="dateofoirth">BirthDate:</label>
+						<input type="text" id="s-dateofbirth" name="dateofbirth" value="14/02/2003" readonly>
+					</span>
+
+					<span class="field">
+						<label for="givenname">Given Name:</label>
+						<input type="text" id="s-givenname" name="givenname" value="Name Example" readonly>
+					</span>
+
+					<span class="field">
+						<label for="occupation">Occupation:</label>
+						<input type="text" id="s-occupation" name="occupation" value="Engineer" readonly>
+					</span>
+
+					<span class="field">
+						<label for="company">Company:</label>
+						<input type="text" id="s-company" name="company" value="TechSmart" readonly>
+					</span>
+
+					<span class="field">
+						<label for="postalcode">Postal Code:</label>
+						<input type="text" id="s-postalcode" name="postalcode" value="4343" readonly>
+					</span>
+
+					<span class="field">
+						<label for="streetname">Street Name:</label>
+						<input type="text" id="s-streetname" name="streetname" value="Irisului" readonly>
+					</span>
+
+					<span class="field">
+						<label for="streetnumber">Street Number:</label>
+						<input type="text" id="s-streetnumber" name="streetnumber" value="243" readonly>
+					</span>
+
+					<span class="field">
+						<label for="city">City:</label>
+						<input type="text" id="s-city" name="city" value="Enschede" readonly>
+					</span>
+
+					<span class="field">
+						<label for="country">Country:</label>
+						<input type="text" id="s-country" name="country" value="The Netherlands" readonly>
+					</span>
+					<div class="footer-buttons">
+						<svg viewBox="0 0 448 512" class="svgIcon">
+							<path
+								d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+							</path>
+						</svg>
+						<a href="viewSchoolForms.html">
+							<p id="back-button">Back</p>
+						</a>
+						<!-- This cannot be implemeted yet -->
+						<a>
+							<p id="delete-button">Delete</p>
+						</a>
+						<a href="editRegistration.html">
+							<p id="edit-button">Edit</p>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div>
+		<a>
+			<p id="download-button" onclick="registrationToPDF(document.getElementById('registration-form'))">Download
+				Form</p>
+		</a>
+	</div>
+
+	<footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+	import {
+		checkPermissions
+	} from "./script/pagePermissionChecker.js";
+	window.addEventListener("load", () => {
+		if (!checkPermissions("SCHOOL_ADMIN")) {
+			window.location.href = '/Topicus/'
+			 
+			return;
+		}
+	});
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art2D2 Quiz</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Art2D2 Quiz</h1>
+        <div id="question-container">
+            <p id="question-text">Loading your first question...</p>
+            <div id="options-container"></div>
+        </div>
+        <button id="next-button" style="display: none;">Next Question</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadFirstQuestion);
+
+        let currentQuestionIndex = 0;
+        let questions = [];
+
+        function loadFirstQuestion() {
+            fetch('/generate-quiz', { method: 'POST' })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.quiz) {
+                        questions = data.quiz;
+                        displayQuestion();
+                    } else {
+                        console.error('Error loading quiz:', data.error);
+                    }
+                })
+                .catch((error) => console.error('Error loading quiz:', error));
+        }
+
+        function displayQuestion() {
+            const questionContainer = document.getElementById('question-container');
+            const nextButton = document.getElementById('next-button');
+
+            if (currentQuestionIndex < questions.length) {
+                const question = questions[currentQuestionIndex];
+                document.getElementById('question-text').innerText = question.question;
+
+                const optionsContainer = document.getElementById('options-container');
+                optionsContainer.innerHTML = '';
+
+                question.choices.forEach((option, index) => {
+                    const optionButton = document.createElement('button');
+                    optionButton.className = 'option-button';
+                    optionButton.innerText = option;
+                    optionButton.onclick = () => selectOption(index, question.answer);
+                    optionsContainer.appendChild(optionButton);
+                });
+
+                nextButton.style.display = 'none';
+            } else {
+                questionContainer.innerHTML = '<p>You have completed the quiz! 🎉</p>';
+            }
+        }
+
+        function selectOption(index, correctAnswer) {
+            const options = document.getElementsByClassName('option-button');
+            Array.from(options).forEach((btn, i) => {
+                btn.style.backgroundColor = i === correctAnswer ? 'green' : i === index ? 'red' : '';
+            });
+            document.getElementById('next-button').style.display = 'block';
+        }
+
+        document.getElementById('next-button').onclick = () => {
+            currentQuestionIndex++;
+            displayQuestion();
+        };
+    </script>
+</body>
+</html>

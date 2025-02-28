@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/schooladmindashboard.css">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/schAdminDashboard.js" type="module"></script>
+    <script defer src="script/administratorUtils.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="schoolPage.html">School Page</a>
+            <a href="schooladmindashboard.html" class="active">Dashboard</a>
+            <a href="viewSchoolForms.html">Forms</a>
+            <a href="registrationadmin.html">Create Form</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="sortSpace"></div>
+
+    <div id="content">
+        <div class="container">
+            <div class="sort-form">
+                <form>
+                    <label for="sort-by">Sort By:</label>
+                    <input type="text" id="sort-by" name="sort-by" placeholder="Enter sorting criteria">
+                    <button type="submit" id="sort-btn">Sort</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="context-box">
+                <label for="registration-id">Registration ID: 100</label>
+                <label for="child-id">Child ID: 100</label>
+                <label for="status" class="status-accepted">Status: Accepted</label>
+                <a href="viewRegistrationParent.html"><button id="view-form-btn">View Form</button></a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="context-box">
+                <label for="registration-id">Registration ID: 101</label>
+                <label for="child-id">Child ID: 101</label>
+                <label for="status" class="status-pending">Status: Pending</label>
+                <a href="viewRegistrationParent.html"><button id="view-form-btn1">View Form</button></a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="context-box">
+                <label for="registration-id">Registration ID: 102</label>
+                <label for="child-id">Child ID: 102</label>
+                <label for="status" class="status-rejected">Status: Rejected</label>
+                <a href="viewRegistrationParent.html"><button id="view-form-btn2">View Form</button></a>
+            </div>
+        </div>
+    </div>
+    <div id="dropdown-buttons-container">
+
+    </div>
+    <footer class="footer">Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("SCHOOL_ADMIN")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

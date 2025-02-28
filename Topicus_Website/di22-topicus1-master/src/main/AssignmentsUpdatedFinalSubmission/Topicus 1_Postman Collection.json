@@ -1,0 +1,1662 @@
+{
+	"info": {
+		"_postman_id": "a45fa744-1920-47ce-aff5-45e951e51848",
+		"name": "Topicus Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27220659",
+		"_collection_link": "https://topicus1ut.postman.co/workspace/topicus1~ba28cee3-c73a-45c4-8de0-3af7f0ff8762/collection/27220659-a45fa744-1920-47ce-aff5-45e951e51848?action=share&creator=27220659&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get Registration by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/registrations/ed34ce7e-956e-4cd3-b619-9978889e1a1d/fields",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"registrations",
+										"ed34ce7e-956e-4cd3-b619-9978889e1a1d",
+										"fields"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get registrations for registration form id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/registrations/export/1aa30d90-a3db-4ad6-abf0-939a7dbb05a3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"registrations",
+										"export",
+										"1aa30d90-a3db-4ad6-abf0-939a7dbb05a3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Post data fields",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/registrations/0257aea4-f0ed-4456-8f76-44931a6e1c9c/fields",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"registrations",
+										"0257aea4-f0ed-4456-8f76-44931a6e1c9c",
+										"fields"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "RegistrationForm",
+			"item": [
+				{
+					"name": "Form",
+					"item": [
+						{
+							"name": "GET",
+							"item": [
+								{
+									"name": "Get Container for Form {formID} of School {schoolID}",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms/{{form_id}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms",
+												"{{form_id}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get all forms for school {schoollD}",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Active Registration Form for school {schoolID}",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms/active",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms",
+												"active"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Registration Form Style by {formID}",
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "POST",
+							"item": [
+								{
+									"name": "Create new Registration Form",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"content-type": true
+										}
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"formMetadata\": {\r\n        \"school_id\": \"4a14325b-bbe3-42f3-95ec-4e33332b007f\",\r\n        \"title\": \"Secondary Education Intake 2022\",\r\n        \"description\": \"Form\",\r\n        \"year\": 2022,\r\n        \"education_type\": \"Secondary\",\r\n        \"is_deleted\": false,\r\n        \"is_active\": true,\r\n        \"start_date\": 1653688800000\r\n    },\r\n    \"sectionContainerList\": [\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 1,\r\n                \"title\": \"Guardian Details\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 5,\r\n                    \"title\": \"Guardian Birth Date\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 8,\r\n                    \"title\": \"Guardian Salary\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 6,\r\n                    \"title\": \"Guardian Occupation\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 9,\r\n                    \"title\": \"Guardian Marital Status\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 2,\r\n                    \"title\": \"Guardian Surname\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Guardian Nationality\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 3,\r\n                    \"title\": \"Guardian Given Names\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 4,\r\n                    \"title\": \"Guardian Phone Number\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 7,\r\n                    \"title\": \"Guardian Company Name\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 2,\r\n                \"title\": \"Child Details\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Child Surname\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 2,\r\n                    \"title\": \"Child Given Names\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 8,\r\n                    \"title\": \"Child Allergies\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 9,\r\n                    \"title\": \"Child Health Insurance\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 3,\r\n                    \"title\": \"Child Preferred Name\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 4,\r\n                    \"title\": \"Child Birth Date\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 5,\r\n                    \"title\": \"Child BSN\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 6,\r\n                    \"title\": \"Child Nationality\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 7,\r\n                    \"title\": \"Child Languages\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 3,\r\n                \"title\": \"Previous Education\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Previous School Name\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 4,\r\n                \"title\": \"Sport Activities\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Favorite Sport\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 5,\r\n                \"title\": \"Extracurricular Activities\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Events Organisation\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 6,\r\n                \"title\": \"Media Release Permissions\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 1,\r\n                    \"title\": \"Written Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 2,\r\n                    \"title\": \"Image Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 3,\r\n                    \"title\": \"Video Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 7,\r\n                \"title\": \"Section 7 Details\"\r\n            },\r\n            \"formComponentList\": []\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 8,\r\n                \"title\": \"Section 8 Details\"\r\n            },\r\n            \"formComponentList\": []\r\n        }\r\n    ],\r\n    \"formStyle\": {\r\n        \"section_font_color\": \"#134553\",\r\n        \"form_component_font_color\": \"#563456\",\r\n        \"background_color\": \"#346565\",\r\n        \"logo\": [72, 101, 108, 108, 111, 32]\r\n    }\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "PUT",
+							"item": [
+								{
+									"name": "Update a registration form",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"formMetadata\": {\r\n        \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n        \"school_id\": \"4a14325b-bbe3-42f3-95ec-4e33332b007f\",\r\n        \"title\": \"Secondary Education Intake 2022\",\r\n        \"description\": \"Form\",\r\n        \"year\": 2022,\r\n        \"form_style\": \"NONE\",\r\n        \"education_type\": \"Secondary\",\r\n        \"is_deleted\": false,\r\n        \"is_active\": true,\r\n        \"start_date\": 1653688800000\r\n    },\r\n    \"sectionContainerList\": [\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 2,\r\n                \"title\": \"Child Details\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"component_id\": \"53483a7d-c7e4-4a3c-a4fa-4dee26a222da\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 1,\r\n                    \"title\": \"Child Surname\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"83aa7074-f1f4-4408-915b-9eac507d9f57\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 2,\r\n                    \"title\": \"Child Given Names\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"898c87a2-b5b5-4d54-96e9-f7ea51e9eeb2\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 8,\r\n                    \"title\": \"Child Allergies\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"e6b75962-da08-464f-894d-3a042dcfa4e7\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 9,\r\n                    \"title\": \"Child Health Insurance\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"d3e18b63-a75c-4b29-af1b-484989f483c5\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 3,\r\n                    \"title\": \"Child Preferred Name\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"66caac82-4359-4905-9e47-c67cc8ce556e\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 4,\r\n                    \"title\": \"Child Birth Date\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"c9f83ae7-8ace-4825-ab96-ebfdfdfa177f\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 5,\r\n                    \"title\": \"Child BSN\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"a55cd61f-3729-4004-8ddd-d1ca9d2f5bed\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 6,\r\n                    \"title\": \"Child Nationality\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"ffb89bdf-212a-4327-a97e-ca1e363cd801\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"4fe8dd5e-ed8d-48d7-881e-6cc4fe0da6b9\",\r\n                    \"position\": 7,\r\n                    \"title\": \"Child Languages\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"80c92fb3-1899-4232-87d6-3b7bd49cf3ce\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 3,\r\n                \"title\": \"Previous Education\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"component_id\": \"3be08927-b352-4c42-8a86-a92c44be085e\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"80c92fb3-1899-4232-87d6-3b7bd49cf3ce\",\r\n                    \"position\": 1,\r\n                    \"title\": \"Previous School Name\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"2472b2f9-d6e7-4c7c-b9f5-d70f4867915c\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 4,\r\n                \"title\": \"Sport Activities\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"component_id\": \"7f7cae61-1414-4fad-b094-30af8e13ca04\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"2472b2f9-d6e7-4c7c-b9f5-d70f4867915c\",\r\n                    \"position\": 1,\r\n                    \"title\": \"Favorite Sport\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"299cfcf5-b5b3-4dcb-9145-81e4d9b8155e\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 5,\r\n                \"title\": \"Extracurricular Activities\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"component_id\": \"3c5fd10b-5712-4d5f-8b2e-69b49170ba7d\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"299cfcf5-b5b3-4dcb-9145-81e4d9b8155e\",\r\n                    \"position\": 1,\r\n                    \"title\": \"Events Organisation please\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"c9e70f0b-bb12-40dd-a5a0-b7696bbd7ebf\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 6,\r\n                \"title\": \"Media Release Permissions\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"component_id\": \"78acc2df-3c00-4b88-ac63-19e79404b9bd\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"c9e70f0b-bb12-40dd-a5a0-b7696bbd7ebf\",\r\n                    \"position\": 1,\r\n                    \"title\": \"Written Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"component_id\": \"846037b2-80fb-4582-b84d-bcb1d70777b7\",\r\n                    \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                    \"section_id\": \"c9e70f0b-bb12-40dd-a5a0-b7696bbd7ebf\",\r\n                    \"position\": 3,\r\n                    \"title\": \"Video Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"section_id\": \"b651e0f1-1223-4477-b285-3e78cc763db3\",\r\n                \"registration_form_id\": \"1239fbb8-570f-4417-b551-1d487e88f9a0\",\r\n                \"position_number\": 8,\r\n                \"title\": \"Section 8 Details idk maybe it works\"\r\n            },\r\n            \"formComponentList\": []\r\n        },\r\n        {\r\n            \"section\": {\r\n                \"position_number\": 8,\r\n                \"title\": \"Section 8 Details\"\r\n            },\r\n            \"formComponentList\": [\r\n                {\r\n                    \"position\": 2,\r\n                    \"title\": \"Image Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                },\r\n                {\r\n                    \"position\": 3,\r\n                    \"title\": \"Video Releases\",\r\n                    \"mandatory\": false,\r\n                    \"data_type\": null\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+										},
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms/{{update_form_id}}",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms",
+												"{{update_form_id}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "DELETE",
+							"item": [
+								{
+									"name": "Delete form by id",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}/forms/927db6ee-82e6-411c-8396-80b6ff2c60a6",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"Topicus",
+												"api",
+												"schools",
+												"{{school_id}}",
+												"forms",
+												"927db6ee-82e6-411c-8396-80b6ff2c60a6"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "School",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get School by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools/{{school_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										"{{school_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Schools",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all SchoolDetails",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools/details",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										"details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Admins Of A School",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/Topicus/api/schools/4a14325b-bbe3-42f3-95ec-4e33332b007f/admins",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										"4a14325b-bbe3-42f3-95ec-4e33332b007f",
+										"admins"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create School",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"address_id\": \"c2bb90a3-1cc6-40c1-8a65-51d5b29e55dd\",\r\n    \"name\": \"Saxion International School of Enschede\",\r\n    \"type\": \"University\",\r\n    \"phone_number\": \"06793845\",\r\n    \"email\": \"saxion@enschede.nl\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update School by Id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"school_id\": \"9a99d34f-71d2-4d8d-8b4a-68c9b14c2071\",\r\n    \"address_id\": \"8825f7ef-671d-4e85-bd19-1e6a36d1b1a8\",\r\n    \"name\": \"Birchwood Elementary\",\r\n    \"type\": \"Primary School\",\r\n    \"phone_number\": \"06742682\",\r\n    \"email\": \"birchwood@overijsel.nl\"\r\n    }"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools/{{update_school_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										"{{update_school_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete School by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/schools/f43f41ef-bd1c-4f5f-835a-7e11b0eeb444",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"schools",
+										"f43f41ef-bd1c-4f5f-835a-7e11b0eeb444"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Parent",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get Parent by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents/{{parent_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents",
+										"{{parent_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all Parents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Parent By User Id from Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents/accounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Children of a Parent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents/addfcdcf-0a39-4aa2-97ac-5e372f03a166/children",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents",
+										"addfcdcf-0a39-4aa2-97ac-5e372f03a166",
+										"children"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create Parent",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"address_id\": \"560898b9-6618-4339-8a93-59c864add01c\",\r\n  \"nationality\": \"American\",\r\n  \"surname\": \"Smith\",\r\n  \"given_names\": [\"John\", \"Dave\"],\r\n  \"phone_number\": \"+1234567890\",\r\n  \"birth_date\": \"1990-01-01\",\r\n  \"occupation\": \"Engineer\",\r\n  \"company_name\": \"ABC Corporation\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Parent Valid Fields",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nationality\": \"French\",\r\n  \"surname\": \"Ricardo\",\r\n  \"given_names\": [\"Buenos\", \"Aires\"],\r\n  \"phone_number\": \"+1234567890\",\r\n  \"birth_date\": \"1999-09-01\",\r\n  \"occupation\": \"Engineer\",\r\n  \"company_name\": \"Microsoft\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update Parent by Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"guardian_id\": \"e54a2857-785a-4e56-b235-5b7db3e8a901\",\r\n        \"account_id\": null,\r\n        \"address_id\": null,\r\n        \"nationality\": \"American\",\r\n        \"surname\": \"Smith\",\r\n        \"given_names\": [\r\n            \"John\",\r\n            \"Dave\",\r\n            \"Trevor\"\r\n        ],\r\n        \"phone_number\": \"+1234567890\",\r\n        \"date_of_birth\": 631148400000,\r\n        \"occupation\": \"Engineering Manager\",\r\n        \"company_name\": \"ABC Corporation\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents/{{update_parent_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents",
+										"{{update_parent_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Parent by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/parents/c6d30271-5c5e-4eb6-b4d2-4410f03844eb",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"parents",
+										"c6d30271-5c5e-4eb6-b4d2-4410f03844eb"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Child",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get all Children",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Child by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/{{child_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										"{{child_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create Child",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"surname\": \"von Hollen\",\r\n    \"givenNames\": [\r\n        \"Tom\"\r\n    ],\r\n    \"preferredName\": \"Tom\",\r\n    \"birthDate\": 1125007200000,\r\n    \"bsn\": \"346345655\",\r\n    \"nationality\": \"Dutch\",\r\n    \"languages\": [\r\n        \"Dutch\",\r\n        \"English\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Child Valid Fields",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"surname\": \"Shaq\",\r\n    \"givenNames\": [\r\n        \"Lebron\", \"James\"\r\n    ],\r\n    \"preferredName\": \"Johnny\",\r\n    \"birthDate\": \"2023-06-21\",\r\n    \"bsn\": 624579321,\r\n    \"nationality\": \"Burundian\",\r\n    \"languages\": [\r\n        \"Dutch\",\r\n        \"English\",\r\n        \"French\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Link Child to Guardian",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\"4db41ad4-6e1a-4840-b894-02a71c5e1640\""
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/{{child_id}}/link",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										"{{child_id}}",
+										"link"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update Child by Id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"childID\": \"7c829c73-363f-4a0c-aa9d-3cb2915f2c40\",\r\n        \"surname\": \"ebweth\",\r\n        \"givenNames\": [\r\n            \"John\",\r\n            \"Matthew\"\r\n        ],\r\n        \"preferredName\": \"\",\r\n        \"birthDate\": -3600000,\r\n        \"bsn\": 0,\r\n        \"nationality\": \"\",\r\n        \"languages\": [\r\n            \"\"\r\n        ]\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/{{update_child_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										"{{update_child_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Child by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/children/6fa6627e-3cdd-47dc-98d0-34dc7db4d741",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"children",
+										"6fa6627e-3cdd-47dc-98d0-34dc7db4d741"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "System User",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get System User by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/{{system_user_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"{{system_user_id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all System Users",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create System User",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"GUARDIAN\",\r\n    \"username\": \"FinalGuardian\",\r\n    \"email\": \"finalG@gmail.com\",\r\n    \"password\": \"pass\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update System User by Id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"account_id\": \"8f90167d-dfd3-4489-80c4-139ef3c0dc5d\",\r\n    \"type\": \"SCHOOL_ADMIN\",\r\n    \"username\": \"FinalSchoolAdmin\",\r\n    \"email\": \"finalS@gmail.com\",\r\n    \"password_value\": \"pass\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/{{update_system_user_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"{{update_system_user_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete System User by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/cd1ef3b3-e487-46de-9fb2-414e6efba5dd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"cd1ef3b3-e487-46de-9fb2-414e6efba5dd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login Request with Invalid Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test\",\r\n    \"email\": \"jefferson@gmail.com\",\r\n    \"password\": \"test_pass\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Topicus/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Topicus",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Request with Valid Password",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"tadmin\",\r\n    \"email\": \"tadmin@gmail.com\",\r\n    \"password\": \"pass\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Topicus/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Topicus",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Request withou Guardian Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"crazy12to\",\r\n    \"email\": \"crazy12@topicus.com\",\r\n    \"password\": \"pass\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/Topicus/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Topicus",
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login with test50",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test50\",\r\n    \"email\": \"test50@gmail.com\",\r\n    \"password\": \"pass\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/Topicus/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Topicus",
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get all Addresses",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Address by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses/{{address_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses",
+										"{{address_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create Address",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postalCode\": \"6756GB\",\r\n    \"streetName\": \"GROVE STREET\",\r\n    \"streetNumber\": 5,\r\n    \"city\": \"Enschede\",\r\n    \"country\": \"Netherlands\",\r\n    \"phoneNumber\": \"+6767567564\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Address Valid Field",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"postalCode\": \"6716AC\",\r\n    \"streetName\": \"Street of Streety\",\r\n    \"streetNumber\": 12,\r\n    \"city\": \"Random\",\r\n    \"country\": \"Spain\",\r\n    \"phoneNumber\": \"+192839184\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update Address by Id",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addressID\": \"9771f5b3-cd02-4247-9389-78fc99d03bdc\",\r\n    \"postalCode\": \"TESTPC\",\r\n    \"streetName\": \"TEST_STREET_NAME2\",\r\n    \"streetNumber\": 6,\r\n    \"city\": \"TEST_CITY_2\",\r\n    \"country\": \"TEST_COUNTRY_2\",\r\n    \"phoneNumber\": \"TEST_PHONE_NUMBER_2\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses/{{update_address_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses",
+										"{{update_address_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Address by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/addresses/46fb8ff0-1796-464e-b16e-26158f25f9c5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"addresses",
+										"46fb8ff0-1796-464e-b16e-26158f25f9c5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "School Admin",
+			"item": [
+				{
+					"name": "GET",
+					"item": [
+						{
+							"name": "Get all School Admin Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/Topicus/api/users/school_admins",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"school_admins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get School Admin Details by Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/school_admins/31d058e6-3d98-47eb-96a0-111a26fc3a96/details",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"school_admins",
+										"31d058e6-3d98-47eb-96a0-111a26fc3a96",
+										"details"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST",
+					"item": [
+						{
+							"name": "Create School Admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"adminID\": \"7e4a7a8f-7d7a-4fb9-a08b-2ad8a28e4d5c\",\r\n    \"surname\": \"Horatiu\",\r\n    \"phoneNumber\": \"0724415\",\r\n    \"birthDate\": \"2023-06-27\",\r\n    \"givenNames\":[\"Marian, Ionel\"],\r\n    \"schoolID\":\"8551ee7a-6614-4533-aece-0b9dd1836ab5\",\r\n    \"employeeID\":\"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/Topicus/api/users/school_admins",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"school_admins"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PUT",
+					"item": [
+						{
+							"name": "Update School Admin",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "Update School Admin",
+									"host": [
+										"Update School Admin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete School Admin by Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/Topicus/api/users/school_admins/{{school_admin_id}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"Topicus",
+										"api",
+										"users",
+										"school_admins",
+										"{{school_admin_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "school_id",
+			"value": "4a14325b-bbe3-42f3-95ec-4e33332b007f"
+		},
+		{
+			"key": "form_id",
+			"value": "1aa30d90-a3db-4ad6-abf0-939a7dbb05a3"
+		},
+		{
+			"key": "registration_id",
+			"value": "4c6755b9-9d06-49c6-961f-93890671cfea"
+		},
+		{
+			"key": "child_id",
+			"value": "1d66e958-b00b-45f6-938c-63bfc6850266"
+		},
+		{
+			"key": "update_form_id",
+			"value": "c028f30c-f355-464a-a997-f074c01d1989"
+		},
+		{
+			"key": "update_child_id",
+			"value": "7c829c73-363f-4a0c-aa9d-3cb2915f2c40"
+		},
+		{
+			"key": "parent_id",
+			"value": "fe503ffc-59b0-42d0-a5bd-1b5d48517739"
+		},
+		{
+			"key": "update_parent_id",
+			"value": "e54a2857-785a-4e56-b235-5b7db3e8a901"
+		},
+		{
+			"key": "system_user_id",
+			"value": "c3d988ed-b9a0-4c3b-9edc-92e94d0a9516"
+		},
+		{
+			"key": "update_system_user_id",
+			"value": "9bb88895-106a-4544-b812-8439b96e7f1a"
+		},
+		{
+			"key": "update_school_id",
+			"value": "9a99d34f-71d2-4d8d-8b4a-68c9b14c2071"
+		},
+		{
+			"key": "address_id",
+			"value": "1bd8fb6d-097d-470c-9ef1-548c1e432962"
+		},
+		{
+			"key": "update_address_id",
+			"value": "9771f5b3-cd02-4247-9389-78fc99d03bdc"
+		},
+		{
+			"key": "school_admin_id",
+			"value": "2c2f2f44-843f-4d8f-bff5-6f3f7b7084bc",
+			"type": "string"
+		}
+	]
+}

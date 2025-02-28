@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Application</title>
+	<link rel="stylesheet" href="styles/applyForRegistration.css">
+	<link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script defer src="script/fillDetails.js" type="module"></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="home.html">Home</a>
+			<a href="dashboard.html">Dashboard</a>
+			<a href="schools.html">Apply for Registration</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="content">
+		<fieldset id="registration-form-field-set">
+			<form action="#">
+				<h1>Guardian Details</h1>
+				<!-- Address -->
+				<label>Postal Code<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Postal Code">
+
+				<label>Street Name<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Street Name">
+
+				<label>Street Number<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Street Number">
+
+				<label>City<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="City">
+
+				<label>Country<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Country">
+
+				<label>Phone Number<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Phone Numbe">
+
+				<!-- Mandatory Guardian Details -->
+				<label>Nationality<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Nationality">
+
+				<label>Surname<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Surname">
+
+				<label>Given Names<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Given Names">
+
+				<label>Phone Number<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Phone Number">
+
+				<label>Birth Date<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Birth Date">
+
+				<label>Occupation<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Occupation">
+
+				<label>Company Name<span style="color: #0069d9;">*</span>:</label>
+				<input type="text" placeholder="Company Name">
+
+				<div class="footer-buttons">
+					<a href="schools.html">
+						<p id="save-button">Save</p>
+					</a>
+				</div>
+				<!-- <p id="info">Make sure all inputs are correct before proceeding!<br>You cannot go back!</p> -->
+			</form>
+		</fieldset>
+	</div>
+	<footer>Powered by Topicus</footer>
+
+</body>
+</html>

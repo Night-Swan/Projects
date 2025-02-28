@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/login.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="schools.html">Apply for Registration</a>
+        </div>
+
+        <!-- Logged-in users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a class="active" href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <fieldset class="login-form">
+            <form action="#">
+                <h1>Good to see you again</h1>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email">
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="lastname" placeholder="Password">
+
+                <div class="footer-buttons">
+                    <a>
+                        <p id="login-button">Login</p>
+                    </a>
+                </div>
+                <div class="signup">
+                    Don't have an account? <a href="signup.html" style="text-decoration: underline;">Sign up</a>
+                </div>
+
+                <article>
+                    <hr>
+                    <p id="or">OR</p>
+                </article>
+
+                <h1>Already applied?</h1>
+                <label>Guardian Code:</label>
+                <input type="text" id="guardianCode" placeholder="Guardian Code">
+
+                <div class="footer-buttons">
+                    <a href="#">
+                        <p id="proceed-button">Enter</p>
+                    </a>
+                </div>
+
+                <div class="continue">
+                    Haven't applied yet? <a href="schools.html" style="text-decoration: underline;">Continue here</a>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

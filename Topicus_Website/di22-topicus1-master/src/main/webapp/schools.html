@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schools</title>
+    <link rel="stylesheet" href="styles/schools.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/schools.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="schools.html" class="active">Apply for Registration</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div id="centered-container">
+            <form action="#" method="get">
+                <div id="search-container">
+                    <input type="text" id="search-input" placeholder="Search for a School">
+                    <!-- <p id="submit-button">Submit</p> -->
+                </div>
+            </form>
+
+            <div id="school-forms">
+                <!-- <div class="school-box">
+                                       <div class="school-photo" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.urbanrealm.com%2Fimages%2Fbuildings%2Fbuilding_763.jpg&f=1&nofb=1&ipt=da40ea030328da456e432cfac46a557d6ffa979f00dcddff5567652d2ff89ce0&ipo=images');"></div>
+                                       <div class="school-name">What if the name was to exceed one line?</div>
+                                        <div class="school-type">Primary School</div>
+                                        <a class="button" href="">Apply</a>
+                                   </div> -->
+                <!--                    <div class="school-box">-->
+                <!--                        <div class="school-photo" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.gcpsk12.org%2Fcms%2Flib%2FGA02204486%2FCentricity%2FDomain%2F11599%2Fmoore-ms.jpg&f=1&nofb=1&ipt=c5de8013a3beb06dbf732b6a0b80c2c034eec39d1a1ba0a334584f07e8ea38e4&ipo=images');"></div>-->
+                <!--                        <div class="school-name">School 2<br/>-->
+                <!--                        Middle School<br/></div>-->
+                <!--                    </div>-->
+                <!--                    <div class="school-box">-->
+                <!--                        <div class="school-photo" style="background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fblog.energytrust.org%2Fwp-content%2Fuploads%2F2016%2F11%2Frev1-e1478803667647.jpg&f=1&nofb=1&ipt=0bb0d3958bc4b9ac56e711a5c767ad9c925d7ed2e0d6cdfccb6048ab5c89c4b5&ipo=images');"></div>-->
+                <!--                        <div class="school-name">School 3<br/>-->
+                <!--                        High School <br/></div>-->
+                <!--                    </div>-->
+                <!--                <button id = "darkModeButton">Dark Mode</button>-->
+
+            </div>
+        </div>
+    </div>
+    <!--<script>-->
+    <!--    // const darkModeButton = document.getElementById('darkModeButton');-->
+    <!--    // const body = document.body;-->
+    <!--    //-->
+    <!--    // darkModeButton.addEventListener('click', toggleDarkMode);-->
+    <!--    //-->
+    <!--    // function toggleDarkMode() {-->
+    <!--    //     body.classList.toggle('dark-mode');-->
+    <!--    // }-->
+    <!--</script>-->
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

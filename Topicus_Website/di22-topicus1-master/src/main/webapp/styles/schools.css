@@ -1,0 +1,217 @@
+@import 'styles.css';
+#centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-input {
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    height: 3.5rem;
+    width: 28rem;
+    text-align: center;
+    padding: 1em;
+    box-sizing: border-box;
+    margin: 2em;
+    color: #003061;
+    display: flex;
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #e8e2e2;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+}
+
+#search-input:hover {
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #e8e2e2;
+    outline-color: #0069d9;
+}
+
+#search-input:before {
+    content: "";
+    position: relative;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    z-index: -1;
+    transition: all 1s;
+    overflow: hidden;
+}
+
+#search-input:hover::before {
+    width: 250%;
+}
+
+#search-input:focus {
+    outline-color: #0069d9;
+}
+
+#school-forms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.school-box {
+    animation: pop-in 0.5s forwards;
+    animation-delay: 0.25s;
+    padding: 0;
+    width: 22rem;
+    height: 25rem;
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee;
+    border-radius: 1em;
+    box-shadow: 1.125rem 1.125rem 2.875rem #919090,
+        1.75rem 1.75rem 3.5rem #ffffff;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.school-box:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+.school-box:hover::before {
+    width: 250%;
+}
+
+.school-box:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0.4rem 0.4rem #e8e2e2 !important;
+
+}
+
+.school-photo {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: calc(100% - 1em);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1em;
+    box-shadow: 0 0.1em 0.2em #003061;
+}
+
+.school-name {
+    margin-top: 1em;
+    font-size: 1.2rem;
+    font-weight: bold;
+    max-width: 90%;
+}
+
+.school-type {
+    margin-bottom: 1em;
+    max-width: 90%;
+}
+
+.button{
+    border-radius: 1.35em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 0.8rem 1.5rem 1.1rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.135rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 0.7rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin-bottom: 1em;
+    box-shadow: 0.25rem 0.25rem #0069d9;
+    cursor: pointer;
+}
+
+.button:hover{
+    color: #ffffff;
+    transform: scale(1.1);
+    /*box-shadow: 4px 5px 17px -4px #12454d;*/
+    box-shadow: 0.25rem 0.25rem #003061;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+.button:hover::before{
+    width: 250%;
+}
+
+
+@keyframes popout {
+    from {
+        transform: scale(0)
+    }
+
+    80% {
+        transform: scale(1.2)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    80% {
+        -webkit-transform: scale(1.2)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

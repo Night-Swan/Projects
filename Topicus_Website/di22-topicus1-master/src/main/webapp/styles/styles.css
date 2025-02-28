@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(145, 172, 202, 0.75) #deeaee;
+    font-family: 'Nunito', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 1.5dvh;
+}
+
+*::-webkit-scrollbar-track {
+    background: #deeaee;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(145, 172, 202, 0.75);
+    border-radius: 1rem;
+}
+
+body {
+    overflow-x: hidden;
+    padding-top: 50px;
+    background: url("./../assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav {
+    width: 90%;
+    max-width: 1000px;
+    background-color: #0069d9;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0.4rem 0.4rem #0a5298;
+    border-radius: 0.75em;
+    animation: drop-top 1s forwards;
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 300ms ease-in-out;
+}
+
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0.2rem 0.125rem 0.125rem #003061;
+}
+
+
+#cancel-button,
+#save-button,
+#submit-button,
+#saveRegistrationStatus {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    margin: 1.5em;
+}
+
+#cancel-button:hover,
+#save-button:hover,
+#submit-button:hover,
+#saveRegistrationStatus:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+}
+
+#cancel-button:before,
+#save-button:before,
+#download-button::before,
+#submit-button:before,
+#saveRegistrationStatus:before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#cancel-button:hover::before,
+#submit-button:hover::before,
+#download-button:hover::before,
+#save-button:hover::before,
+#saveRegistrationStatus:hover::before {
+    width: 250%;
+}
+
+nav a,
+nav span {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: unset;
+    font-size: 1.05em;
+    margin: 0.5em;
+}
+
+nav a span {
+    color: #164ca7;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    animation: rotate 0.9s ease-in-out both;
+}
+
+nav a:hover span {
+    animation: storm1261 0.9s ease-in-out both;
+    animation-delay: 0.09s;
+}
+
+nav a span {
+    z-index: 20;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #003061;
+    text-shadow: none;
+    border-radius: 0.75em;
+}
+
+a {
+    text-decoration: unset;
+}
+
+nav a.active {
+    background-color: #003061;
+    color: white;
+    border-radius: 0.75em;
+    margin: 0.5em;
+}
+
+.profile {
+    float: right;
+}
+
+.content {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    flex: 1;
+    padding: 80px 1em 1em;
+}
+
+footer {
+    width: 100%;
+    height: 1.3em;
+    background-color: #0069d9;
+    font-style: italic;
+    font-size: small;
+    text-align: center;
+    color: white;
+    text-shadow: 0.1rem 0.05rem 0.03rem #003061;
+    margin-top: auto;
+    box-shadow: 0.1rem -0.1rem 0.2rem 0rem #003061;
+    animation: drop-bottom 1s forwards;
+}
+
+.button, .edit-button, .save-button, .add-button, .add-school-button, .cancel-button, .submit-button, a {
+    cursor: pointer;
+}
+
+#add-admin.submit-button{
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+}
+
+#add-admin.submit-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#add-admin.submit-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#add-admin.submit-button:hover::before {
+    width: 250%;
+}
+
+
+input {
+    cursor: text;
+}
+
+@media only screen and (max-width: 980px) {
+    nav a, nav span {
+        padding: 8px 6px;
+        margin: 4px;
+        font-size: 14px;
+    }
+}
+
+@keyframes drop-top {
+    from {
+        transform: translateY(-100%) translateX(-50%);
+    }
+    to {
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+@keyframes drop-bottom {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes popout {
+    from {
+        transform: scale(0)
+    }
+    80% {
+        transform: scale(1.2)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(0)
+    }
+    80% {
+        -webkit-transform: scale(1.2)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(4deg) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: rotate(-4deg) translate3d(0, 0, 0);
+    }
+    75% {
+        transform: rotate(2deg) translate3d(0, 0, 0);
+    }
+    100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+}
+
+@keyframes storm1261 {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    25% {
+        transform: translate3d(5px, 0, 0) translateZ(0);
+    }
+    50% {
+        transform: translate3d(-4px, 0, 0) translateZ(0);
+    }
+    75% {
+        transform: translate3d(2.8px, 0, 0) translateZ(0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/viewFormSchoolAdmin.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <form id="registration-form" action="#" method="post">
+        <div id="registration-form-details">
+            <div id="registration-form-title">Secondary Education Intake 2022</div>
+        </div>
+        <div id="sections">
+            <div id="section-1" class="section">
+                <p>Guardian Details</p>
+                <div class="section-form-components">
+                    <span id="form-component-1" class="form-component"><label class="form-component-label"
+                            for="Guardian Nationality">Guardian Nationality</label><input class="form-component-input"
+                            type="text" name="Guardian Nationality" value="Dutch"></span><span id="form-component-2"
+                        class="form-component"><label class="form-component-label" for="Guardian Surname">Guardian
+                            Surname</label><input class="form-component-input" type="text" name="Guardian Surname"
+                            value="Van Dijk"></span><span id="form-component-3" class="form-component"><label
+                            class="form-component-label" for="Guardian Given Names">Guardian
+                            Given Names</label><input class="form-component-input" type="text"
+                            name="Guardian Given Names" value="Tom, Alex"></span><span id="form-component-4"
+                        class="form-component"><label class="form-component-label" for="Guardian Phone Number">Guardian
+                            Phone Number</label><input class="form-component-input" type="text"
+                            name="Guardian Phone Number" value="+31 06 745913"></span><span id="form-component-5"
+                        class="form-component"><label class="form-component-label" for="Guardian Birth Date">Guardian
+                            Birth Date</label><input class="form-component-input" type="text" name="Guardian Birth Date"
+                            value="1978-09-05"></span><span id="form-component-6" class="form-component"><label
+                            class="form-component-label" for="Guardian Occupation">Guardian Occupation</label><input
+                            class="form-component-input" type="text" name="Guardian Occupation" value="CEO"></span><span
+                        id="form-component-7" class="form-component"><label class="form-component-label"
+                            for="Guardian Company Name">Guardian Company Name</label><input class="form-component-input"
+                            type="text" name="Guardian Company Name" value="Guardian INC."></span><span id="form-component-8"
+                        class="form-component"><label class="form-component-label" for="Guardian Salary">Guardian
+                            Salary</label><input class="form-component-input" type="text" name="Guardian Salary"
+                            value="125000"></span><span id="form-component-9" class="form-component"><label
+                            class="form-component-label" for="Guardian Marital Status">Guardian Marital
+                            Status</label><input class="form-component-input" type="text" name="Guardian Marital Status"
+                            value="Divorced"></span>
+                </div>
+            </div>
+            <div id="section-2" class="section">
+                <p>Child Details</p>
+                <div class="section-form-components"><span id="form-component-1" class="form-component"><label
+                            class="form-component-label" for="Child Surname">Child Surname</label><input
+                            class="form-component-input" type="text" name="Child Surname" value="van Dijk"></span><span
+                        id="form-component-2" class="form-component"><label class="form-component-label"
+                            for="Child Given Names">Child Given Names</label><input class="form-component-input"
+                            type="text" name="Child Given Names" value="Marvin, Dave"></span><span id="form-component-3"
+                        class="form-component"><label class="form-component-label" for="Child Preferred Name">Child
+                            Preferred Name</label><input class="form-component-input" type="text"
+                            name="Child Preferred Name" value="Marvin"></span><span id="form-component-4"
+                        class="form-component"><label class="form-component-label" for="Child Birth Date">Child Birth
+                            Date</label><input class="form-component-input" type="text" name="Child Birth Date"
+                            value="2005-07-12"></span><span id="form-component-5" class="form-component"><label
+                            class="form-component-label" for="Child BSN">Child BSN</label><input
+                            class="form-component-input" type="text" name="Child BSN" value="192893457"></span><span
+                        id="form-component-6" class="form-component"><label class="form-component-label"
+                            for="Child Nationality">Child Nationality</label><input class="form-component-input"
+                            type="text" name="Child Nationality" value="Dutch"></span><span id="form-component-7"
+                        class="form-component"><label class="form-component-label" for="Child Languages">Child
+                            Languages</label><input class="form-component-input" type="text" name="Child Languages"
+                            value="Dutch, English"></span><span id="form-component-8" class="form-component"><label
+                            class="form-component-label" for="Child Allergies">Child Allergies</label><input
+                            class="form-component-input" type="text" name="Child Allergies" value="None"></span><span
+                        id="form-component-9" class="form-component"><label class="form-component-label"
+                            for="Child Health Insurance">Child Health Insurance</label><input
+                            class="form-component-input" type="text" name="Child Health Insurance" value="None"></span>
+                </div>
+            </div>
+            <div id="section-3" class="section">
+                <p>Previous Education</p>
+                <div class="section-form-components"><span id="form-component-1" class="form-component"><label
+                            class="form-component-label" for="Previous School Name">Previous School Name</label><input
+                            class="form-component-input" type="text" name="Previous School Name" value="Enschede Secondary School"></span></div>
+            </div>
+            <div id="section-4" class="section">
+                <p>Sport Activities</p>
+                <div class="section-form-components"><span id="form-component-1" class="form-component"><label
+                            class="form-component-label" for="Favorite Sport">Favorite Sport</label><input
+                            class="form-component-input" type="text" name="Favorite Sport" value="Basketball"></span></div>
+            </div>
+        </div>
+        <div id="footer-buttons"><a href="/Topicus/viewSchoolForms.html">
+                <p class="button">Back</p>
+            </a><a>
+                <p class="button">Save</p>
+            </a><a href="/Topicus/registrationadmin.html">
+                <p class="button">Edit</p>
+            </a><a onclick="formToPDF(document.querySelector('#registration-form'))">
+                <p class="button">Registration Download Test</p>
+            </a><a onclick="exportRegistrationsToCsv('1aa30d90-a3db-4ad6-abf0-939a7dbb05a3')">
+                <p class="button">Registrations Export Test</p>
+            </a>
+        </div>
+
+    </form>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script/doc-utils.js"></script>
+
+</html>

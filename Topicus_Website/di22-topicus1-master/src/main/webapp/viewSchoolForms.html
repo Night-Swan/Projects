@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>School Forms</title>
+	<link rel="stylesheet" href="styles/home.css">
+	<link rel="stylesheet" href="styles/viewSchoolForms.css">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script defer src="script/viewSchoolForms.js" type="module"></script>
+	<script defer src="script/formUtils.js" type="module"></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="schoolPage.html">School Page</a>
+			<a href="schooladmindashboard.html">Dashboard</a>
+			<a href="viewSchoolForms.html" class="active">Forms</a>
+			<a href="registrationadmin.html">Create Form</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="content">
+
+	</div>
+	<footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+	import {
+		checkPermissions
+	} from "./script/pagePermissionChecker.js";
+	window.addEventListener("load", () => {
+		if (!checkPermissions("PUBLIC")) {
+			window.location.href = '/Topicus/'
+			 
+			return;
+		}
+	});
+</script>
+
+</html>

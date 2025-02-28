@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>/* Description Section with Gradient Background */
+.description-section {
+    position: relative;
+    padding: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+    background-image: url('../static/pictures/robot.png'); /* Add the robot image */
+    background-size: cover; /* Ensure the image covers the container */
+    background-position: center; /* Center the image */
+    color: white; /* Text color */
+}
+
+/* Gradient Overlay */
+.description-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6), /* Dark overlay at the top */
+        rgba(0, 0, 0, 0.8)  /* Darker overlay at the bottom */
+    );
+    z-index: 1; /* Ensure the overlay is above the image */
+}
+
+/* Description Content */
+.description-content {
+    position: relative;
+    z-index: 2; /* Ensure the text is above the overlay */
+}
+
+/* Adjust Text Styling */
+.description-content p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .description-section {
+        padding: 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .description-content p {
+        font-size: 1rem; /* Smaller font size for smaller screens */
+    }
+}</style>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <!-- Hero Section -->
+            <div class="hero-section mb-5">
+                <h1 class="display-4">Welcome to ART2D2</h1>
+                <p class="lead">Your AI-powered tour guide for an awesome art experience!</p>
+            </div>
+
+            <!-- Description Section with Gradient Background -->
+            <div class="description-section mb-5">
+                <div class="description-content">
+                    <p class="mb-3">This is an AI tour guide designed to make your art exploration more engaging and informative.</p>
+                    <p class="mb-3">Scan the QR codes next to paintings to start a conversation about them!</p>
+                    <p class="mb-4">If you're not comfortable using your camera, you can browse the database to select a painting.</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="/scan" class="btn btn-primary btn-lg mb-3">
+                    <i class="fas fa-qrcode"></i> SCAN QR CODE
+                </a>
+                <a href="/database" class="btn btn-secondary btn-lg mb-3">
+                    <i class="fas fa-database"></i> BROWSE DATABASE
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

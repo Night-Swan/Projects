@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}QR Scanner{% endblock %}
+
+{% block content %}
+<style>
+    /* Header Section */
+.header-section {
+    padding: 2rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.header-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* QR Scanner Section */
+.qr-scanner-section {
+    margin: 2rem 0;
+}
+
+.qr-reader {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Fallback Message */
+.fallback-message {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.fallback-message a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.fallback-message a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 2rem;
+    }
+
+    .header-section p {
+        font-size: 1rem;
+    }
+
+    .qr-reader {
+        width: 100%;
+    }
+}
+</style>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <!-- Header Section -->
+            <div class="header-section mb-5">
+                <h1 class="display-4">QR Scanner</h1>
+                <p class="lead">Point your camera at the QR code next to a painting to learn more!</p>
+            </div>
+
+            <!-- QR Scanner Section -->
+            <div class="qr-scanner-section">
+                <div id="qr-reader" class="qr-reader"></div>
+            </div>
+
+            <!-- Fallback Message -->
+            <div class="fallback-message mt-4">
+                <p class="text-muted">If you're having trouble scanning, you can <a href="/database">browse the database</a> instead.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include the QR Code library -->
+<script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+<script>
+    function onScanSuccess(decodedText, decodedResult) {
+        // Log the QR Code content and redirect or handle the result
+        console.log(`Code scanned = ${decodedText}`, decodedResult);
+        // Redirect to the chat page with the decoded text
+        window.location.href = `/chat/${decodedText}`;
+    }
+
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "qr-reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess);
+</script>
+{% endblock %}

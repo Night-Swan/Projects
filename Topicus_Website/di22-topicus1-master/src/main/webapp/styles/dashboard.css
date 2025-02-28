@@ -1,0 +1,201 @@
+@import 'styles.css';
+
+.content {
+    width: 90%;
+}
+
+.button{
+    border-radius: 1.35em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 0.65rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.25rem 0.25rem #0069d9;
+    cursor: pointer;
+
+}
+
+.button:hover{
+    color: #ffffff;
+    transform: scale(1.1);
+    /*box-shadow: 4px 5px 17px -4px #12454d;*/
+    box-shadow: 0.25rem 0.25rem #003061;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+.button:hover::before{
+    width: 250%;
+}
+
+li {
+    list-style-type: none;
+}
+
+.img {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    border-radius: 2% 2% 1em 1em;
+}
+
+img {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 1em;
+    box-shadow: 0 0.1em 0.2em #003061;
+}
+
+.img::after {
+    display: block;
+    content: "";
+    padding-top: 80%;
+}
+
+#registrations-list {
+    margin: auto;
+    text-align: center;
+    flex: 1;
+    padding: 5em 1em 1em;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.no-registrations {
+    /*Will be used when there are no registrations*/
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+.registrations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    margin: 4rem 2rem;
+    position: relative;
+    width: 20em;
+    height: auto;
+    box-shadow:  18px 18px 46px #919090,
+    -28px -28px 56px #ffffff;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    transition: transform 0.5s ease-in-out;
+}
+
+.registrations:hover {
+    box-shadow:  18px 18px 46px #919090,
+    -28px -28px 56px #ffffff;
+    transform:scale(1.2);
+}
+
+.registrations>p:nth-child(3) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 5% 0 2%;
+}
+
+.registrations>p:nth-child(4) {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    max-width: 90%;
+    overflow: hidden;
+}
+
+.status {
+    z-index: -1;
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 0.3px;
+    width: 99.8%;
+    height: 16rem;
+    align-items: center;
+    margin-top: auto;
+    border-radius: 1.5em;
+    font-size: medium;
+    font-style: oblique;
+    margin-bottom: 0.5rem;
+}
+
+.rejected {
+    background-color: rgb(239, 65, 100);
+    box-shadow: 0 1.75px 2.25px rgb(191, 17, 52);
+}
+
+.accepted {
+    background-color: rgb(100, 255, 175);
+    box-shadow: 0 1.75px 2.25px rgb(75, 199, 135);
+}
+
+.submitted {
+    background-color: rgb(252, 222, 125);
+    box-shadow: 0 1.75px 2.25px rgb(167, 135, 87);
+}
+
+.awaiting_submission {
+    background-color: rgb(254, 151, 78);
+    box-shadow: 0 1.75px 2.25px rgb(159, 101, 14);
+}
+
+.under_review {
+    background-color: rgb(73, 8, 164);
+    color: aliceblue;
+    box-shadow: 0 1.75px 2.25px rgb(20, 4, 85);
+}
+
+.notification {
+    background-color: rgb(151, 7, 151);
+    color: aliceblue;
+    box-shadow: 0 1.75px 2.25px rgb(110, 5, 110);
+}
+
+.status-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes popout {
+    from{transform:scale(0)}
+    80%{transform:scale(1.2)}
+    to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+    from{-webkit-transform:scale(0)}
+    80%{-webkit-transform:scale(1.2)}
+    to{-webkit-transform:scale(1)}
+}

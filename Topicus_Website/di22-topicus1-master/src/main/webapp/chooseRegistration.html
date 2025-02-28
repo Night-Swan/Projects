@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Forms</title>
+    <link rel="stylesheet" href="styles/chooseRegistration.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/chooseRegistration.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="schools.html" class="active">Apply for Registration</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- <section>
+            <article>
+                <h1>Secondary Education</h1>
+                <a class="button">Apply</a>
+            </article>
+        </section>
+
+        <section>
+            <article>
+                <h1>Thirdary Education</h1>
+                <a class="button">Apply</a>
+            </article>
+        </section>
+
+        <section>
+            <article>
+                <h1>Fourthary Education</h1>
+                <a class="button">Apply</a>
+            </article>
+        </section> -->
+    </div>
+    </div>
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

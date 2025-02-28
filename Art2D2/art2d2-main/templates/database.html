@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}Database{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art2D2</title>
+    <link rel="stylesheet" href="../static/css/database.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href = "/">
+        <h1>Art2D2</h1></a>
+    </header>
+    <div class="container">
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search paintings by name..." onkeyup="filterPaintings()">
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <select id="filter-year" onchange="filterPaintings()">
+                <option value="">Filter by Year</option>
+                <option value="18th century">18th century</option>
+                <option value="19th century">19th century</option>
+                <option value="20th century">20th century</option>
+            </select>
+
+            <select id="filter-artist" onchange="filterPaintings()">
+                <option value="">Filter by Artist</option>
+                <option value="Kazimir Malevich">Kazimir Malevich</option>
+                <option value="Pablo Picasso">Pablo Picasso</option>
+                <option value="Piet Mondrian">Piet Mondrian</option>
+            </select>
+
+            <select id="filter-country" onchange="filterPaintings()">
+                <option value="">Filter by Country</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="Russia">Russia</option>
+                <option value="The Netherlands">The Netherlands</option>
+            </select>
+        </div>
+
+        <!-- Clear Filters Button -->
+        <input type="button" id="clear_filters" name="clear_filters" value="Clear filters" onclick="clearFilters()">
+
+        <!-- Paintings Grid -->
+        <div id="paintings">
+            <div class="painting" data-name="Black Square" data-year="20th century" data-artist="Kazimir Malevich" data-country="Ukraine">
+                <a href="{{ url_for('chat', painting_name='Black Square') }}">
+                    <img src="{{ url_for('static', filename='pictures/black_square.jpg') }}" alt="Black Square">
+                </a>
+                <div class="painting-details">
+                    <h3>Black Square</h3>
+                    <p>Artist: Kazimir Malevich</p>
+                    <p>Year: 1915</p>
+                    <p>Country: Russia</p>
+                </div>
+            </div>
+
+            <div class="painting" data-name="Red Square" data-year="20th century" data-artist="Kazimir Malevich" data-country="Ukraine">
+                <a href="{{ url_for('chat', painting_name='Red Square') }}">
+                    <img src="{{ url_for('static', filename='pictures/red_square.jpg') }}" alt="Red Square">
+                </a>
+                <div class="painting-details">
+                    <h3>Red Square</h3>
+                    <p>Artist: Kazimir Malevich</p>
+                    <p>Year: 1915</p>
+                    <p>Country: Ukraine</p>
+                </div>
+            </div>
+
+            <div class="painting" data-name="Composition with Red, Blue and Yellow" data-year="20th century" data-artist="Piet Mondrian" data-country="The Netherlands">
+                <a href="{{ url_for('chat', painting_name='Composition with Red, Blue and Yellow') }}">
+                    <img src="{{ url_for('static', filename='pictures/red_blue_yellow.jpg') }}" alt="Composition with Red, Blue and Yellow">
+                </a>
+                <div class="painting-details">
+                    <h3>Composition with Red, Blue and Yellow</h3>
+                    <p>Artist: Piet Mondrian</p>
+                    <p>Year: 1930</p>
+                    <p>Country: The Netherlands</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function clearFilters() {
+            document.getElementById('filter-year').value = "";
+            document.getElementById('filter-artist').value = "";
+            document.getElementById('filter-country').value = "";
+            document.getElementById('search').value = "";
+            filterPaintings();
+        }
+
+        function filterPaintings() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const yearFilter = document.getElementById('filter-year').value;
+            const artistFilter = document.getElementById('filter-artist').value;
+            const countryFilter = document.getElementById('filter-country').value;
+
+            const paintings = document.querySelectorAll('.painting');
+
+            paintings.forEach(painting => {
+                const name = painting.getAttribute('data-name').toLowerCase();
+                const year = painting.getAttribute('data-year');
+                const artist = painting.getAttribute('data-artist');
+                const country = painting.getAttribute('data-country');
+
+                const matchesSearch = name.includes(searchQuery);
+                const matchesYear = !yearFilter || year === yearFilter;
+                const matchesArtist = !artistFilter || artist === artistFilter;
+                const matchesCountry = !countryFilter || country === countryFilter;
+
+                if (matchesSearch && matchesYear && matchesArtist && matchesCountry) {
+                    painting.style.display = '';
+                } else {
+                    painting.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

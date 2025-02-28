@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topicus Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/topicusadmindashboard.css">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/tpcAdminDashboard.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="topicusAddSchool.html">School Management</a>
+            <a href="topicusadmindashboard.html" class="active">Dashboard</a>
+            <a href="topicusaddschooladmin.html">School Administrators</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="content">
+        <h1 style="margin-left: 21.025em; margin-top: 2.1875em;">Schools</h1>
+        <div class="form-box">
+            <div class="left">
+                <label>School 1</label>
+            </div>
+            <div class="right">
+                <a href="#">
+                    <button id="add-adm-btn">Add School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-adm-btn">Remove School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-scl-btn">Remove School</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="left">
+                <label>School 2</label>
+            </div>
+            <div class="right">
+                <a href="#">
+                    <button id="add-adm-btn1">Add School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-adm-btn1">Remove School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-scl-btn1">Remove School</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <div class="left">
+                <label>School 3</label>
+            </div>
+            <div class="right">
+                <a href="#">
+                    <button id="add-adm-btn2">Add School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-adm-btn2">Remove School Admin</button>
+                </a>
+                <a href="#">
+                    <button id="rmv-scl-btn2">Remove School</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="add-school-button">
+            <a href="topicusAddSchool.html" class="add-school-link">Add School</a>
+        </div>
+    </div>
+
+    <div class="add-school-button" id="add-school">
+        <a href="topicusAddSchool.html" class="add-school-link">Add School</a>
+    </div>
+    <footer class="footer">Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("TOPICUS_ADMIN")) {
+            window.location.href = '/Topicus/';
+            return;
+        }
+    });
+</script>
+
+</html>

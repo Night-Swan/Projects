@@ -1,0 +1,26 @@
+@import 'styles.css';
+
+p {
+    font-style: italic;
+    font-size: 3em;
+    margin-bottom: 2em;
+}
+
+img {
+    width: 90%;
+    height: 50%;
+}
+
+.content{
+    animation: fade-in 4s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

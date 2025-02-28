@@ -1,0 +1,201 @@
+@import 'styles.css';
+
+h1 {
+    margin-left: 21.025em; margin-top: 2.1875em;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button#add-school {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 170px;
+}
+
+button#add-school:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+button#add-school:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+button#add-school:hover::before {
+    width: 250%;
+}
+
+.form-box {
+    background-color: #ccc;
+    width: 62.5em;
+    margin: 4.50em auto 0.75em auto;
+    padding: 1.25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-box .context-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-box .context-box label {
+    margin-right: 1.875em;
+}
+
+.form-box .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 1.25em;
+}
+
+.form-box .right label {
+    margin-left: 0.625em;
+    margin-right: 2.5em;
+    margin-top: 0.35em;
+    padding: 0.3125em 0.625em;
+    border-radius: 0.25em;
+}
+
+.form-box label {
+    display: block;
+    margin-bottom: 0.625em;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.25em;
+    margin-bottom: 0.625em;
+}
+
+.form-box button {
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    background-color: #0069d9;
+    color: white;
+    padding: 0.625em 1.25em;
+    border: none;
+    border-radius: 0.25em;
+    cursor: pointer;
+    margin-right: 1em;
+    padding-right: 2em;
+    font-weight: bold;
+    background-color: #003061;
+    box-shadow: 0.2rem 0.2rem #0069d9;
+    overflow: hidden;
+}
+
+
+.form-box button:active {
+    background-color: #003061;
+}
+
+.form-box button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.2rem 0.2rem #0069d9;
+}
+
+.form-box button:before {
+    transition: width 1s;
+}
+
+.form-box button:hover::before {
+    width: 250%;
+}
+
+.form-box {
+    margin-bottom: 1.5em;
+    height: 40px;
+    border-radius: 0.75em;
+    box-shadow: 0.4rem 0.4rem #b3afaf;
+
+}
+
+.form-box:first-of-type {
+    margin-top: 6em;
+}
+
+.form-box .right button {
+    margin-left: 0.625em;
+}
+
+nav {
+    margin-bottom: 2em;
+}
+
+nav a,
+nav span {
+    margin: 0.5em;
+}
+
+.add-school-button {
+    text-align: center;
+    width: 100%;
+    margin-top: 3.5em;
+}
+
+.add-school-button {
+    position: fixed;
+    bottom: 1em;
+    z-index: 999;
+}
+
+.add-school-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #003061;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 0.25em;
+    box-shadow: 0.2rem 0.2rem #0069d9;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-container button {
+    margin-left: 10px;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Edit Registration</title>
+	<link rel="stylesheet" href="styles/registrationadmin.css">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script src="script/formUtils.js" type="module" defer></script>
+	<script src="script/registrationFormBuilder.js" type="module" defer></script>
+	<script src="script/formStyler.js" type="module" defer></script>
+	<script src="script/formPreview.js" type="module" defer></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="schoolPage.html">School Page</a>
+			<a href="schooladmindashboard.html">Dashboard</a>
+			<a href="viewSchoolForms.html">Forms</a>
+			<a href="registrationadmin.html" class="active">Create Form</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="content">
+		<div class="title">Manage Registration Form</div>
+		<div id="registration-essentials">
+			<div id="form_essentials_description"></div>
+			<div id="form_essentials_input"></div>
+		</div>
+
+		<div id="form_container">
+			<div id="addition-description"></div>
+			<button id="add-section-button" class="add-button">Add Section</button>
+			<div id="form-editor"></div>
+		</div>
+
+		<div id="styler-section">
+			<div id="styler-desc"></div>
+			<div id="styler-panel">
+				<br>
+				<label for="section-color-selector">Section Header Color:</label><input id="section-color-selector"
+					type="color">
+				<br>
+				<label for="comp-color-selector">Component Input Space Color:</label><input id="comp-color-selector"
+					type="color">
+				<br>
+				<label for="background-color-selector">Background Color:</label><input id="background-color-selector"
+					type="color">
+				<br>
+				<label for="school-logo">School Logo:</label><input id="school-logo" type="file" accept="image/"
+					alt="Logo Here">
+			</div>
+		</div>
+
+		<div id="formPreview">
+			<button id="form-preview-start">Show Preview</button>
+			<div id="preview-space"></div>
+		</div>
+		<div id="button_container"><button id="save_button">Submit Form</button></div>
+	</div>
+
+	<footer>Powered by Topicus</footer>
+</body>
+<script type="module">
+	import {
+		checkPermissions
+	} from "./script/pagePermissionChecker.js";
+	window.addEventListener("load", () => {
+		if (!checkPermissions("SCHOOL_ADMIN")) {
+			window.location.href = '/Topicus/'
+			 
+			return;
+		}
+	});
+</script>
+
+</html>

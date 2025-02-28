@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="../static/css/chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <h2>
+                    <i class="fas fa-home"></i> <!-- Home icon -->
+                    ART2D2
+                </h2>
+            </a>
+            <p>Ask me anything!</p>
+            <button id="quiz-button" class="btn btn-primary" onclick="startQuiz()">Take the Quiz</button>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <div class="message bot-message">
+                <div class="message-content" id="message-content">
+                    Looks like you chose {paintingName} painting. What would you like to learn about it?
+                </div>
+            </div>
+        </div>
+        <div class="chat-footer">
+            <button type="button" class="predefinedMessage" onclick="sendPredefinedMessage('Who painted this piece?')">Who painted this piece?</button>
+        <button type="button"  class="predefinedMessage" onclick="sendPredefinedMessage('What does the piece try to accomplish?')">What does the piece try to accomplish?</button>
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">Send</button>
+        </div>
+        </div>
+
+    </div>
+
+    <script>
+        const totalPath = window.location.pathname.split('/');
+        const paintingName = decodeURIComponent(totalPath[totalPath.length - 1]);
+
+        document.getElementById('message-content').textContent = `Looks like you chose ${paintingName}. What would you like to learn about it?`;
+
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        const quizQuestions = []; // Will hold the questions from Ollama
+        let currentQuestionIndex = 0; // Track the current question
+
+        // Function to start the quiz
+        function startQuiz() {
+    // Disable the quiz button to prevent multiple quizzes
+    const quizButton = document.getElementById('quiz-button');
+    quizButton.disabled = true;
+
+    // Reset quiz state
+    quizQuestions.length = 0; // Reset quiz questions
+    currentQuestionIndex = 0; // Reset question index
+
+    // Fetch and start the quiz
+    fetchQuiz();
+}
+
+        // Fetch quiz questions from the backend
+        async function fetchQuiz() {
+    try {
+        const response = await fetch('/generate-quiz', { method: 'POST' });
+        const data = await response.json();
+        console.log("Backend Response:", data); // Log the response for debugging
+
+        // Validate the response
+        if (data.quiz && Array.isArray(data.quiz)) {
+            quizQuestions.push(...data.quiz); // Add quiz questions to the array
+            console.log("Quiz Questions:", quizQuestions); // Log the quiz questions
+            showNextQuestion(); // Start the quiz
+        } else {
+            console.error("Invalid quiz data:", data);
+            addBotMessage("Oops! Could not generate quiz questions.");
+        }
+    } catch (error) {
+        console.error("Error fetching quiz:", error);
+        addBotMessage("An error occurred while fetching quiz questions.");
+    }
+}
+
+        // Display the next question in the chat
+       function showNextQuestion() {
+    if (quizQuestions.length === 0) {
+        addBotMessage("No quiz questions available. Please try again.");
+        return;
+    }
+
+    if (currentQuestionIndex < quizQuestions.length) {
+        const question = quizQuestions[currentQuestionIndex];
+        addBotMessage(question.question); // Add question to chat
+
+        // Add choices as buttons
+        question.choices.forEach((choice) => {
+            const choiceButton = document.createElement('button');
+            choiceButton.className = 'quiz-choice-button';
+            choiceButton.textContent = choice;
+
+            // Attach the onclick event correctly
+            choiceButton.addEventListener('click', () => handleAnswer(choice));
+
+            // Append the button to the chat box
+            const chatBox = document.getElementById('chat-box');
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('message', 'bot-message');
+            botMessage.innerHTML = `<div class="message-content"></div>`;
+            botMessage.querySelector('.message-content').appendChild(choiceButton);
+            chatBox.appendChild(botMessage);
+        });
+
+        // Scroll the chat box to the bottom
+        const chatBox = document.getElementById('chat-box');
+        chatBox.scrollTop = chatBox.scrollHeight;
+    } else {
+        addBotMessage("That's the end of the quiz! Great job!");
+
+        // Re-enable the quiz button after the quiz is completed
+        const quizButton = document.getElementById('quiz-button');
+        quizButton.disabled = false;
+    }
+}
+
+        // Handle user's answer
+        function handleAnswer(selectedChoice) {
+    const correctAnswer = quizQuestions[currentQuestionIndex].answer;
+
+    // Check if the selected choice matches the correct answer
+    if (selectedChoice === correctAnswer) {
+        addBotMessage("Correct! 🎉");
+    } else {
+        // Display the correct answer if the selected answer is incorrect
+        addBotMessage(`Oops! The correct answer was: ${correctAnswer}`);
+    }
+
+    // Move to the next question
+    currentQuestionIndex++;
+    showNextQuestion();
+}
+
+        // Add a bot message to the chat
+        function addBotMessage(message) {
+            const chatBox = document.getElementById('chat-box');
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('message', 'bot-message');
+            botMessage.innerHTML = `<div class="message-content">${message}</div>`;
+            chatBox.appendChild(botMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        // Send a user message
+        async function sendMessage() {
+            const messageInput = document.getElementById('message-input');
+            const message = messageInput.value.trim();
+
+            if (message !== '') {
+                const chatBox = document.getElementById('chat-box');
+
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user-message');
+                userMessage.innerHTML = `<div class="message-content">${message}</div>`;
+                chatBox.appendChild(userMessage);
+
+                messageInput.value = ''; // Clear input field
+
+                try {
+                    console.log("Inside the try");
+                    const response = await fetch('/ask-question', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            painting: paintingName,
+                            question: message
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    // Add bot response to chat
+                    const data = await response.json();
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot-message');
+                    botMessage.innerHTML = `<div class="message-content">${data.answer}</div>`;
+                    chatBox.appendChild(botMessage);
+                    
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot-message');
+                    botMessage.innerHTML = `<div class="message-content">Sorry, I encountered an error. Please try again.</div>`;
+                    chatBox.appendChild(botMessage);
+                }
+                
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        }
+
+        async function sendPredefinedMessage(message) {
+        if (message !== '') {
+                const chatBox = document.getElementById('chat-box');
+
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('message', 'user-message');
+                userMessage.innerHTML = `<div class="message-content">${message}</div>`;
+                chatBox.appendChild(userMessage);
+
+                try {
+                    console.log("Inside the try");
+                    const response = await fetch('/ask-question', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            painting: paintingName,
+                            question: message
+                        })
+                    });
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok' + JSON.parse(response.responseText));
+
+                    }
+
+                    const data = await response.json();
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot-message');
+                    botMessage.innerHTML = `<div class="message-content">${data.answer}</div>`;
+                    chatBox.appendChild(botMessage);
+
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('message', 'bot-message');
+                    botMessage.innerHTML = `<div class="message-content">Sorry, I encountered an error. Please try again.</div>`;
+                    chatBox.appendChild(botMessage);
+                }
+
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+h1 {
+    font-size: 2em;
+    padding-top: 1em;
+    text-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    animation: fade-in 2s ease;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+body {
+    background: url("./../assets/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+p {
+    text-align: center;
+    font-size: large;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    font-weight: bold;
+    text-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#contact-form {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    margin: 1em auto;
+    align-self: auto;
+    animation: fade-in 1.5s ease;
+    border-radius: 32px;
+    background: #eee7e7;
+    box-shadow:  28px 28px 56px #949494,
+    -28px -28px 56px #ffffff;
+    border: none;
+}
+
+#contact-form form {
+    width: 100%;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    color: #003061;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+input[type=text]:focus,
+textarea:focus {
+    outline-color: #0069d9;
+}
+
+.footer-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 5%;
+    padding-top: 1.2em;
+
+}
+
+
+label {
+    display: flex;
+    text-align: center;
+    width: 4em;
+}
+
+.field {
+    white-space: nowrap;
+    text-align: center;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popout {
+    from{transform:scale(0)}
+    80%{transform:scale(1.2)}
+    to{transform:scale(1)}
+}
+@-webkit-keyframes popout {
+    from{-webkit-transform:scale(0)}
+    80%{-webkit-transform:scale(1.2)}
+    to{-webkit-transform:scale(1)}
+}
+
+#dropdown {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.submit-button {
+    text-align: center;
+    /*width: 100%;*/
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #003061;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0.75em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-left: 20.3125em;
+}
+
+.submit-button:hover {
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+}

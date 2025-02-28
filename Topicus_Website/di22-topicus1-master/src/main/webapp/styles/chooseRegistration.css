@@ -1,0 +1,156 @@
+@import 'styles.css';
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 3em auto;
+}
+
+article {
+    animation: pop-in 0.5s forwards;
+    animation-delay: 0.25s;
+    padding: 2% 3%;
+    width: 60%;
+    height: fit-content;
+    margin: 0.5em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee;
+    border-radius: 2em;
+    box-shadow: 1.125rem 1.125rem 2.875rem #919090,
+        1.75rem 1.75rem 3.5rem #ffffff;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+article:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+article:hover::before {
+    width: 250%;
+}
+
+article:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0.4rem 0.4rem #e8e2e2 !important;
+
+}
+
+h1 {
+    font-size: 2em;
+    padding-top: 1em;
+    animation: fade-in 2s ease;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+h2 {
+    padding-bottom: 1.5em;
+}
+
+h3 {
+    padding-bottom: 1.5em;
+}
+
+#last_h3 {
+    padding-bottom: 2em;
+}
+
+.button {
+    border-radius: 1.35em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1rem 1.5rem;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.135rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin-bottom: 1em;
+    box-shadow: 0.25rem 0.25rem #0069d9;
+    cursor: pointer;
+
+}
+
+.button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.25rem 0.25rem #003061;
+}
+
+.button:before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+.button:hover::before {
+    width: 250%;
+}
+
+@keyframes popout {
+    from {
+        transform: scale(0)
+    }
+
+    80% {
+        transform: scale(1.2)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    80% {
+        -webkit-transform: scale(1.2)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="styles/signup.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/signup.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="schools.html">Apply for Registration</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <fieldset class="signup-form">
+            <form action="#">
+                <h1>Sign Up</h1>
+
+                <label for="email">Email Address<span style="color: #0069d9;">*</span>:</label>
+                <input type="text" id="email" name="email" placeholder="example@gmail.com">
+
+                <label for="username">Username<span style="color: #0069d9;">*</span>:</label>
+                <input type="text" id="username" name="username" placeholder="Username">
+
+                <label for="password">Password<span style="color: #0069d9;">*</span>:</label>
+                <input type="password" id="password" name="password" placeholder="Password">
+
+                <label for="cpassword">Confirm Password<span style="color: #0069d9;">*</span>:</label>
+                <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password">
+
+                <label for="gid">Guardian Code:</label>
+                <input type="text" id="gid" name="email" placeholder="Guardian Code" style="margin-bottom: 0.2rem;">
+                <p id="info">&#9432; Fill this in only if you are already registered</p>
+
+                <!-- <p id="message"></p> -->
+                <div class="footer-buttons">
+                    <a href="#">
+                        <p id="signup-button">Sign Up</p>
+                    </a>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

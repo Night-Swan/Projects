@@ -1,0 +1,171 @@
+/*Used in applyForRegistration, login, signup*/
+@import 'styles.css';
+
+:root {
+    --button-color: #003061;
+    --form-background-color: #eee7e7;
+    --font-color: #003061;
+    --input-box-color: #eee;
+}
+
+.border {
+    border: none;
+}
+
+h1 {
+    font-size: 2em;
+    padding-top: 1em;
+    animation: fade-in 2s ease;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.5em;
+    padding: 1em;
+    animation: fade-in 2s ease;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    border-radius: 0.75rem;
+    box-shadow: 0.4rem 0.4rem #dfd9d9;
+}
+
+#registration-form-field-set, .login-form, .signup-form {
+    margin: 4em auto 3em auto;
+    animation: fade-in 2s ease;
+    width: 50%;
+    min-width: 25em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2em;
+    padding: 5%;
+    background: var(--form-background-color);
+    box-shadow: 1.75rem 1.75rem 3.5rem #949494, -1.75rem -1.75rem 3.5rem #ffffff;
+    border: none;
+}
+
+.login-form, .signup-form {
+    width: 35%;
+    min-width: 20em;
+}
+
+form {
+    min-width: 85%;
+    max-width: 90%;
+}
+
+label {
+    margin-bottom: 1em;
+    text-align: left;
+    display: block;
+    text-align: center;
+}
+
+input[type=text], input[type=password], select {
+    width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    color: var(--font-color);
+    display: flex;
+    background-color: var(--input-box-color);
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+    outline-color: #740044;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    margin-bottom: 1.5em;
+    padding-top: 1em;
+}
+
+#next-button, #login-button, #proceed-button, #save-button, #signup-button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--button-color);
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    margin: 0 auto;
+    width: fit-content;
+    cursor: pointer;
+}
+
+#next-button:hover, #login-button:hover, #proceed-button:hover, #save-button:hover, #signup-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem var(--button-color);
+}
+
+#next-button:before, #login-button:before, #proceed-button::before, #save-button::before, #signup-button::before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#next-button:hover::before, #login-button:hover::before, #proceed-button:hover::before, #save-button:hover::before, #signup-button:hover::before {
+    width: 250%;
+}
+
+#info {
+    width: 95%;
+    text-align: center;
+    font-size: 1em;
+    color: indigo;
+    opacity: 0.9;
+    margin: 1em auto;
+}
+
+#dropdown {
+    white-space: nowrap;
+    text-align: center;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popout {
+    from {
+        -webkit-transform: scale(0)
+    }
+    80% {
+        -webkit-transform: scale(1.2)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}

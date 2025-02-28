@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="styles/myprofile.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module"></script>
+    <script defer src="script/profile/profile.js" type="module"></script>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="schools.html">Apply for Registration</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a class="active" href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <fieldset>
+            <form action="#">
+
+                <span class="titles">
+                    <h2 class="active-tab" id="profile-data" style="border-top-left-radius: 2rem;">Profile Data</h2>
+                    <h2 id="children" style="border-top-right-radius: 2rem;">Children</h2>
+                </span>
+
+                <article id="panel-profile">
+                    <section id="account-details">
+                        <h3>Account Details</h3>
+                        <div class="profile-img"></div>
+
+                        <span class="user-detail">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" class="locked" readonly>
+                        </span>
+
+                        <span class="user-detail">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="locked" readonly>
+                        </span>
+
+                        <span class="user-detail">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="locked" readonly>
+                        </span>
+
+
+                        <!-- hidden until edit -->
+                        <span class="user-detail" id="block-confirm-password">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" class="locked"
+                                readonly>
+                            <p class="info">&#9432; You can change your password.<br>Please, input your password even if
+                                you are not willing to change it!</p>
+                        </span>
+
+                        <div class="footer-buttons">
+                            <p class="edit-button">Edit</p>
+                            <!-- hidden until edit -->
+                            <p class="save-button">Save</p>
+                            <p class="cancel-button">Cancel</p>
+                        </div>
+                    </section>
+                    <hr>
+                    <section id="personal-details">
+                        <h3>Personal Details</h3>
+
+                        <div id="address">
+                            <span class="address-detail">
+                                <label>Postal Code</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="address-detail">
+                                <label>Street Name</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="address-detail">
+                                <label>Street Number</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="address-detail">
+                                <label>City</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="address-detail">
+                                <label>Country</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="address-detail">
+                                <label>Phone Number</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+                        </div>
+
+                        <div id="guardian">
+                            <span class="guardian-detail">
+                                <label>Nationality</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Surname</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Given Names</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Phone Number</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Birth Date</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Occupation</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="guardian-detail">
+                                <label>Company Name</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+                        </div>
+
+                        <div class="footer-buttons">
+                            <p class="edit-button">Edit</p>
+                            <!-- hidden until edit -->
+                            <p class="save-button">Save</p>
+                            <p class="cancel-button">Cancel</p>
+                        </div>
+                    </section>
+                </article>
+
+
+                <article id="panel-children">
+                    <section id="children-details">
+                        <h3>Children Details</h3>
+                        <span id="dropdown">
+                            <label for="child">Select a child:</label>
+                            <select id="childOptions">
+                                <!--                                <option value="black">Black</option>-->
+                                <!--                                <option value="red">Red</option>-->
+                                <!--                                <option value="blue">Blue</option>-->
+                                <!--                                <option value="green">Green</option>-->
+                            </select>
+                        </span>
+
+                        <div id="child">
+                            <span class="child-detail">
+                                <label>Surname</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>Given Names</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>Preferred Name</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>Birth Date</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>BSN</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>Nationality</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+
+                            <span class="child-detail">
+                                <label>Languages</label>
+                                <input type="text" class="locked" readonly>
+                            </span>
+                        </div>
+
+                        <div class="footer-buttons">
+                            <p class="edit-button">Edit</p>
+                            <!-- hidden until edit -->
+                            <p class="save-button">Save</p>
+                            <p class="cancel-button">Cancel</p>
+                        </div>
+                        <p class="info" style="display: none">&#9432; You do not have any registered children!<br>Add
+                            them below.</p>
+                        <hr>
+                        <h3>Add a child?</h3>
+                        <div id="create-child" style="display: none;">
+                            <span class="create-child-detail">
+                                <label>Surname</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>Given Names</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>Preferred Name</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>Birth Date</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>BSN</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>Nationality</label>
+                                <input type="text" class="edit">
+                            </span>
+
+                            <span class="create-child-detail">
+                                <label>Languages</label>
+                                <input type="text" class="edit">
+                            </span>
+                        </div>
+
+                        <div class="footer-buttons" id="add-child">
+                            <p class="add-button">Add Child</p>
+                            <p class="cancel-button" style="display: none">Cancel</p>
+                        </div>
+                    </section>
+                </article>
+            </form>
+        </fieldset>
+    </div>
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>

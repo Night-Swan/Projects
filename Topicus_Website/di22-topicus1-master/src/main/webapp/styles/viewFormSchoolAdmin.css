@@ -1,0 +1,376 @@
+@import 'styles.css';
+
+#registration-form-field-set {
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 30px;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: auto;
+    background: #eee7e7;
+    box-shadow:  28px 28px 56px #949494,
+    -28px -28px 56px #ffffff;
+    border: none;
+    animation: fade-in 2s ease;
+}
+
+#registration-form {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 1em auto;
+    align-self: auto;
+    flex-direction: column;
+}
+
+#registration-form-title {
+    font-size: 2em;
+    padding-top: 1em;
+    text-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    animation: fade-in 2s ease;
+    margin-bottom: 50px;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    padding-left: 0.5em;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p.section_headers{
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75em;
+    text-align: center;
+    font-size: large;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    font-weight: bold;
+    text-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-bottom: 70px;
+    box-shadow: 0.2rem 0.2rem #dfd9d9;
+}
+
+p {
+
+    text-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+p.button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+}
+
+p.button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+p.button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+p.button:hover::before {
+    width: 250%;
+}
+
+
+.form_component { /*inline label with input field*/
+    white-space: nowrap;
+    text-align: center;
+}
+
+#copy-button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+}
+
+#copy-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#copy-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#copy-button:hover::before {
+    width: 250%;
+}
+
+#download-button{
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    margin: 1.5em;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#download-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#download-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#download-button:hover::before {
+    width: 250%;
+}
+
+label.form-component-label {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+label {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10em; /* FORM COMPONENT TITLE/LABEL WIDTH */
+    /*     left: 50%;
+        transform: translateX(110%); */
+}
+
+input[type=text],
+textarea {
+    width: 80%;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    color: #003061;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+input[type=text]:focus,
+textarea:focus {
+    outline-color: #0069d9;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    margin: 20% 20%;
+    padding-top: 1.2em;
+
+}
+
+div#footer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit-button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+#edit-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#edit-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#edit-button:hover::before {
+    width: 250%;
+}
+
+#back-button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#back-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#back-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#back-button:hover::before {
+    width: 250%;
+}
+
+@keyframes popout {
+    from{transform:scale(0)}
+    80%{transform:scale(1.2)}
+    to{transform:scale(1)}
+}
+
+@-webkit-keyframes popout {
+    from{-webkit-transform:scale(0)}
+    80%{-webkit-transform:scale(1.2)}
+    to{-webkit-transform:scale(1)}
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

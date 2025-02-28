@@ -1,0 +1,74 @@
+/* Hero Section */
+.hero-section {
+    padding: 2rem;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+/* Description Section */
+.description-section {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Action Buttons */
+.action-buttons .btn {
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.action-buttons .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.action-buttons .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.action-buttons .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.action-buttons .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .description-section {
+        font-size: 1rem;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}

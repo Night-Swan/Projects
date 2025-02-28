@@ -1,0 +1,440 @@
+@import 'styles.css';
+
+.content {
+    width: 100%;
+    margin-top: 4em;
+}
+
+label.input-label-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    width: 100%;
+    margin-top: 30px;
+}
+
+#content_space {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2em;
+    padding-top: 1em;
+    text-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    animation: fade-in 2s ease;
+    margin-bottom: 3em;
+    font-weight: bold;
+}
+
+
+h3 {
+    margin-top: 1em;
+    border-radius: 0.75em;
+    text-align: center;
+    font-size: x-large;
+    padding: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+body {
+    background: url("./../assets/background.jpg") no-repeat;
+    background-size: cover;
+}
+
+form#registration-form {
+    width: 90%;
+}
+
+.section-name{
+    margin-top: 30px;
+    border-radius: 0.75em;
+    text-align: center;
+    font-size: large;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    font-weight: bold;
+    text-shadow: 0 12px 16px 0 rgb(163 3 3 / 24%), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0.4rem 0.4rem #dbcaca;
+}
+
+p {
+    border-radius: 0.75em;
+    margin-top: 30px;
+    text-align: center;
+    font-size: large;
+    padding: 1.5em 1.5em 1.5em 1.5em;
+    font-weight: bold;
+    box-shadow: 28px 28px 56px rgba(148, 148, 148, 0);
+    text-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#contact-form {
+    width: 70%;
+    min-width: 70%;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    margin: 1em auto;
+    align-self: auto;
+    animation: fade-in 1.5s ease;
+    border-radius: 32px;
+    background: #eee7e7;
+    box-shadow: 28px 28px 56px #949494,
+    -28px -28px 56px #ffffff;
+    border: none;
+}
+
+#contact-form form {
+    width: 100%;
+}
+
+input[type=text], .content-input {
+    margin-top: 1em;
+    width: 80%;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    color: #003061;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #dfd9d9;
+    cursor: pointer;
+}
+
+input[type=text]:focus,
+textarea:focus {
+    outline-color: #0069d9;
+}
+
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 5%;
+    padding-top: 1.2em;
+}
+
+#edit-button {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+}
+
+#edit-button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+
+}
+
+#edit-button:before {
+    content: "";
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#edit-button:hover::before {
+    width: 250%;
+}
+
+#download-button{
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    margin: 1.5em;
+    width: 15%;
+}
+
+a{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+div#idElement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-button,
+#back-button,
+#cancelRegistrationStatus,
+#saveRegistrationStatus {
+    border-radius: 0.75em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    box-shadow: 0.4rem 0.4rem #0069d9;
+    margin: 1.5em;
+}
+
+#delete-button:hover,
+#back-button:hover,
+#cancelRegistrationStatus:hover,
+#saveRegistrationStatus:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+}
+
+#delete-button:before,
+#back-button:before,
+#download-button::before,
+#cancelRegistrationStatus:before,
+#saveRegistrationStatus:before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #0069d9;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1s;
+}
+
+#delete-button:hover::before,
+#back-button:hover::before,
+#download-button:hover::before,
+#cancelRegistrationStatus:hover::before,
+#saveRegistrationStatus:hover::before {
+    width: 250%;
+}
+
+#download-button:hover {
+    cursor: pointer;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0.4rem 0.4rem #003061;
+}
+
+#dropdown_button {
+    position: relative;
+    margin: 0;
+    margin-left: 4em;
+    width: 25%;
+    padding: 0.3em;
+    box-sizing: border-box;
+    text-align: center;
+    color: #003061;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.4rem 0.4rem #d7cece;
+    cursor: pointer;
+    margin: 1.5em;
+}
+
+#dropdown-box option[value="ACCEPTED"]:checked {
+    /* Styles for Option 1 when selected */
+    background-color: green;
+}
+
+#dropdown-box option[value="REJECTED"]:checked {
+    /* Styles for Option 1 when selected */
+    background-color: red;
+}
+
+#dropdown-box option[value="UNDER_REVIEW"]:checked {
+    /* Styles for Option 1 when selected */
+    background-color: #003061;
+}
+
+#dropdown-box option[value="MODIFICATIONS_ALLOWED"]:checked {
+    /* Styles for Option 1 when selected */
+    background-color: #003061;
+}
+
+#description {}
+
+#modification_list {}
+
+#modification_space {}
+
+.checkBox {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+label {
+    flex-direction: column;
+    justify-content: center;
+    width: 14.6em;
+}
+
+
+/*forms*/
+.context-box {
+    width: 60%;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    color: #003061;
+    align-items: center;
+    justify-content: center;
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.7rem 0.7rem #d7cece;
+    transform: translateX(+32.5%);
+    transition: all 300ms ease-in-out;
+}
+
+.form-box label {
+    margin-bottom: 0.625em;
+    font-size: 25px;
+    font-weight: bolder;
+    width: fit-content;
+}
+
+.form-box span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.625em;
+    font-size: 20px;
+}
+
+.form-box, input {
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.25em;
+    margin-bottom: 1em;
+}
+
+#idElement {
+    overflow-wrap: break-word;display: flex;text-align: left;}
+
+.field {
+
+    white-space: nowrap;
+    text-align: center;
+}
+
+#dropdown {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.mod {
+    border: 0.0625em solid #ccc;
+    border-radius: 0.5em;
+    padding: 1.25em;
+    background-color: #f2f2f2;
+    margin-top: 1.25em;
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.1);
+    width: 80%;
+}
+#content_space {
+    width: 80%;
+    justify-content: center;
+    padding: 2%;
+    margin: 1em auto;
+    align-self: auto;
+    animation: fade-in 1.5s ease;
+    border-radius: 32px;
+    background: #eee7e7;
+    box-shadow:  28px 28px 56px #949494,
+    -28px -28px 56px #ffffff;
+    border: none;
+}
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popout {
+    from {
+        transform: scale(0)
+    }
+
+    80% {
+        transform: scale(1.2)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    80% {
+        -webkit-transform: scale(1.2)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}

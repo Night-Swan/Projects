@@ -1,0 +1,71 @@
+@import 'styles.css';
+
+#forms {
+    margin: auto;
+    text-align: center;
+    flex: 1;
+    padding: 5em 1em 1em;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1em;
+    margin: 4rem 2rem;
+    position: relative;
+    width: 20em;
+    height: auto;
+    box-shadow:  18px 18px 46px #919090,
+    -28px -28px 56px #ffffff;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    transition: transform 0.5s ease-in-out;
+}
+
+.form_title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1em;
+    text-transform: uppercase;
+    color: #003061;
+}
+
+.form_description {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 1em;
+    text-transform: uppercase;
+    color: #003061;
+}
+
+.form_year {
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin: 1em;
+    text-transform: uppercase;
+    color: #003061;
+}
+
+.button {
+    border-radius: 1.35em;
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+    padding: 1em 2em;
+    border: none;
+    font-weight: bold;
+    letter-spacing: 2.3px;
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: all 1s;
+    font-size: 0.65rem;
+    position: relative;
+    overflow: hidden;
+    background-color: #003061;
+    margin: 1.5em;
+    box-shadow: 0.25rem 0.25rem #0069d9;
+    cursor: pointer;
+}

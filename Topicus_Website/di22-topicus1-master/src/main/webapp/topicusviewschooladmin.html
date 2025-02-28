@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View School Admin</title>
+	<link rel="stylesheet" href="styles/topicusAddSchool.css">
+	<link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+	<script defer src="script/navigation.js" type="module"></script>
+	<script defer src="script/topicusViewAdminDetails.js" type="module"></script>
+</head>
+
+<body>
+	<nav id="navigation">
+		<div class="roles">
+			<a href="topicusAddSchool.html">School Management</a>
+			<a href="topicusadmindashboard.html">Dashboard</a>
+			<a href="topicusaddschooladmin.html" class="active">School Administrators</a>
+		</div>
+
+		<!-- Logged users -->
+		<div class="user">
+			<div class="profile">
+				<a href="myprofile.html">My Profile</a>
+				<a id="logoutBtn" href="javascript:void(0)">Logout</a>
+			</div>
+		</div>
+
+		<!-- Guest users -->
+		<div class="guest">
+			<div class="profile">
+				<a href="login.html">Login</a>
+			</div>
+		</div>
+	</nav>
+
+	<div id="content_space" class="content">
+		<h1>View School Administrator</h1>
+		<div id="contact-form">
+			<form action="#" method="get">
+				<p>School Administrator Details</p>
+				<span class="field">
+					<label for="givenNames">First Name/Names:</label>
+					<input type="text" id="givenNames" name="givenNames" value="Name" readonly>
+				</span>
+
+				<span class="field">
+					<label for="lastname">Surname:</label>
+					<input type="text" id="lastname" name="lastname" value="Surname" readonly>
+				</span>
+
+				<span class="field">
+					<label for="email">Email:</label>
+					<input type="text" id="email" name="email" value="Email" readonly>
+				</span>
+				<span class="field">
+					<label for="phone">Phone Number:</label>
+					<input type="text" id="phone" name="phone" value="Phone Number" readonly>
+				</span>
+				<span class="field">
+					<label for="username">Username:</label>
+					<input type="text" id="username" name="username" value="Username" readonly>
+				</span>
+				<span class="field">
+					<label for="birthDate">Birth Date:</label>
+					<input type="text" id="birthDate" name="birthDate" value="Birth Date" readonly>
+				</span>
+				<button type="submit" class="submit-button" id="back-button">Back</button>
+			</form>
+		</div>
+	</div>
+	<footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+	import {
+		checkPermissions
+	} from "./script/pagePermissionChecker.js";
+	window.addEventListener("load", () => {
+		if (!checkPermissions("TOPICUS_ADMIN")) {
+			window.location.href = '/Topicus/'
+			 
+			return;
+		}
+	});
+</script>
+
+</html>

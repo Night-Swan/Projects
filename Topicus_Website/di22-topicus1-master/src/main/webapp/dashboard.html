@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="/assets/topicus-favicon.ico">
+    <script defer src="script/navigation.js" type="module">window.scrollTo(0, 0)</script>
+    <script defer src="script/parentDashboard.js" type="module"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <nav id="navigation">
+        <div class="roles">
+            <a href="home.html">Home</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="schools.html">Apply for Registration</a>
+        </div>
+
+        <!-- Logged users -->
+        <div class="user">
+            <div class="profile">
+                <a href="myprofile.html">My Profile</a>
+                <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+            </div>
+        </div>
+
+        <!-- Guest users -->
+        <div class="guest">
+            <div class="profile">
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <ul id="registrations-list">
+            <li class="registrations">
+                <p class="img"><img src="assets/js-school.jpg"></p>
+                <p class="status rejected"><span class="status-text">Rejected</span></p>
+                <p>John Doe</p>
+                <p>JavaScript High School</p>
+                <a class="button" href="viewRegistrationParent.html">View</a>
+            </li>
+
+            <li class="registrations">
+                <p class="img"><img src="assets/la-school.jpg"></p>
+                <p class="status accepted"><span class="status-text">Accepted</span></p>
+                <p>Jane Doe</p>
+                <p>High School of Linear Algebra</p>
+                <a class="button" href="viewRegistrationParent.html">View</a>
+            </li>
+
+            <li class="registrations">
+                <p class="img"><img src="assets/calculus-school.jpg"></p>
+                <p class="status submitted"><span class="status-text">Submitted</span></p>
+                <p>Janet Doe</p>
+                <p>High School of Calculus</p>
+                <a class="button" href="viewRegistrationParent.html">View</a>
+            </li>
+
+            <li class="registrations">
+                <p class="img"><img src="assets/prob-school.jpg"></p>
+                <p class="status notification"><span class="status-text">An admin added a note!</span></p>
+                <p>Jon Doe</p>
+                <p>Probability High School of Supreme Possibilities "Probabus Probabilitius"</p>
+                <a class="button" href="viewRegistration.html">View</a>
+            </li>
+
+            <li class="registrations">
+                <p class="img"><img src="assets/prob-school.jpg"></p>
+                <p class="status awaiting_submission"><span class="status-text">Awaiting submission</span></p>
+                <p>Jon Doe</p>
+                <p>Probability High School of Supreme Possibilities "Probabus Probabilitius"</p>
+                <a class="button" href="viewRegistration.html">View</a>
+            </li>
+
+            <li class="registrations">
+                <p class="img"><img src="assets/prob-school.jpg"></p>
+                <p class="status under_review"><span class="status-text">Under review</span></p>
+                <p>Jon Doe</p>
+                <p>Probability High School of Supreme Possibilities "Probabus Probabilitius"</p>
+                <a class="button" href="viewRegistrationParent.html">View</a>
+            </li>
+        </ul>
+    </div>
+    <footer>Powered by Topicus</footer>
+
+</body>
+<script type="module">
+    import {
+        checkPermissions
+    } from "./script/pagePermissionChecker.js";
+    window.addEventListener("load", () => {
+        if (!checkPermissions("PUBLIC")) {
+            window.location.href = '/Topicus/'
+             
+            return;
+        }
+    });
+</script>
+
+</html>
