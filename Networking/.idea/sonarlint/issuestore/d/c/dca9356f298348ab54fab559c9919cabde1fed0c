@@ -1,9 +1,0 @@
-
-W
-java:S1854'"<Remove this useless assignment to local variable "reserved".(”Š¨Òşÿÿÿÿ
-N
-java:S1854%"8Remove this useless assignment to local variable "type".(ˆ«¹€
-?
-java:S1481%")Remove this unused "type" local variable.(ˆ«¹€
-H
-java:S1481'"-Remove this unused "reserved" local variable.(”Š¨Òşÿÿÿÿ
