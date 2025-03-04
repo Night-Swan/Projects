@@ -1,7 +1,7 @@
 from graph import *
 from graph_io import *
 
-with open('repair4.grl') as f:
+with open('test_cycles.grl') as f:
     L = load_graph(f, read_list=True)
 
 GL = []

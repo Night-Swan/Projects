@@ -1,0 +1,17 @@
+
+\	java:S112±"FDefine and throw a dedicated exception instead of using a generic one.(–´¬ò
+k	java:S117v"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ïÔ‰Ìúÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºÑÖ²
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¼±ºê
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÕÑ´¹
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(•š©ó
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÑÖØÕüÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(§ªõþþÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(·ÙÀ˜øÿÿÿÿ
+2
+java:S3626Æ"Remove this redundant jump.(ûÁÝ…

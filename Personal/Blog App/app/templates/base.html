@@ -10,7 +10,11 @@
 
             Microblog:
             Home
+            {% if current_user.is_anonymous %}
             Login
+            {% else %}
+            Logout
+            {% endif %}
         
 
         
