@@ -1,7 +1,7 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 from typing import Optional
-from app import db, login
+from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from enum import Enum
@@ -11,9 +11,7 @@ class TaskStatus(Enum):
     IN_PROGRESS = "in_progress"
     DONE = "done"
 
-
 class User(db.Model):
-
     __tablename__ = 'users'
 
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -30,19 +28,16 @@ class User(db.Model):
     
     def check_password(self, password):
         return check_password_hash(self.hashed_password, password)
-    
 
 class Task(db.Model):
-
     __tablename__ = 'tasks'
 
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    user_id: so.Mapped[int] = so.mapped_column(User.id, index=True)
+    user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('users.id'), index=True)
     user: so.Mapped['User'] = so.relationship(back_populates='task')
     title: so.Mapped[str] = so.mapped_column(sa.String(64))
     description: so.Mapped[str] = so.mapped_column(sa.String(200))
     due_date: so.Mapped[datetime] = so.mapped_column(sa.DateTime)
-    status: so.Mapped['TaskStatus'] = so.mapped_column(sa.Enum)
+    status: so.Mapped[TaskStatus] = so.mapped_column(sa.Enum(TaskStatus))
     created_at: so.Mapped[datetime] = so.mapped_column(sa.DateTime)
     updated_at: so.Mapped[datetime] = so.mapped_column(sa.DateTime)
-
