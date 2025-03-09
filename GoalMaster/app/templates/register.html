@@ -7,27 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class = "container", id="container">
-        <form action="/register", method="post", id="form-container">
+    <div class="container" id="container">
+        <h1>Register</h1>
+        <form id="register-form" method="post" action="/register">
+            <input type="hidden" name="csrf_token" id="csrf_token">
             <div>
                 <label for="username">Username:</label>
-                <input type="text", name="username", id="username">
+                <input type="text" name="username" id="username">
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input type="email", name="email", id="email">
+                <input type="email" name="email" id="email">
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password", name="password", id="password">
+                <input type="password" name="password" id="password">
             </div>
             <div>
-                <label for="confirm_password">Confirm Password:</label>
-                <input type="password", name="confirm_password", id="confirm_password">
+                <label for="repeat_password">Confirm Password:</label>
+                <input type="password" name="repeat_password" id="repeat_password">
             </div>
             <button type="submit">Register</button>
         </form>
+        <div id="result"></div>
     </div>
-    
+
+    <script>
+        fetch('/get-csrf-token')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('csrf_token').value = data.csrf_token;
+            })
+            .catch(error => console.error('Error fetching CSRF token:', error));
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+
+            fetch('/register', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                if (data.message) {
+                    resultDiv.innerText = data.message;
+                } else {
+                    resultDiv.innerText = 'Error: ' + (data.error || 'Unknown error') + 
+                        (data.details ? ' - ' + JSON.stringify(data.details) : '');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred.';
+            });
+        });
+    </script>
 </body>
 </html>

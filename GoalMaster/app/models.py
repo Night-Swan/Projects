@@ -1,6 +1,5 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from typing import Optional
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime

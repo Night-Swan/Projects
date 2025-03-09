@@ -6,19 +6,56 @@
     <title>Login</title>
 </head>
 <body>
-    <div class = "container", id="container">
-        <form action="/login", method="post", id="form-container">
+    <div class="container" id="container">
+        <h1>Login</h1>
+        <form id="login-form" method="post" action="/login">
+            <input type="hidden" name="csrf_token" id="csrf_token">
             <div>
                 <label for="username">Username:</label>
-                <input type="text", name="username", id="username">
+                <input type="text" name="username" id="username" size="32">
             </div>
             <div>
                 <label for="password">Password:</label>
-                <input type="password", name="password", id="password">
+                <input type="password" name="password" id="password" size="32">
             </div>
-            <button type="submit">Login</button>
+            <div>
+                <button type="submit">Login</button>
+            </div>
         </form>
+        <div id="result"></div>
     </div>
-    
+
+    <script>
+        fetch('/get-csrf-token')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('csrf_token').value = data.csrf_token;
+            })
+            .catch(error => console.error('Error fetching CSRF token:', error));
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const formData = new FormData(this);
+
+            fetch('/login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                if (data.access_token) {
+                    localStorage.setItem('token', data.access_token);
+                    resultDiv.innerText = 'Login successful! Token: ' + data.access_token;
+                } else {
+                    resultDiv.innerText = 'Error: ' + data.error;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred.';
+            });
+        });
+    </script>
 </body>
 </html>
