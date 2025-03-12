@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script> <!-- Add jwt-decode library -->
+</head>
+<body>
+    <h1>User Profile</h1>
+    <p><strong>Username:</strong> <span id="username"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <script>
+        async function fetchUserProfile() {
+            try {
+                const token = localStorage.getItem('access_token');
+                console.log('Retrieved token:', token);
+                if (!token) {
+                    throw new Error('No token found');
+                }
+
+                const decodedToken = jwt_decode(token);
+                const csrfToken = decodedToken.csrf;
+                console.log('CSRF token from JWT:', csrfToken);
+
+                console.log('Sending request to /user/profile with token:', token);
+                const response = await fetch('/user/profile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'X-CSRF-TOKEN': csrfToken
+                    }
+                });
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Failed to fetch user profile: ${response.status} - ${errorText}`);
+                }
+                const data = await response.json();
+                console.log('Received data:', data);
+                document.getElementById('username').textContent = data.username;
+                document.getElementById('email').textContent = data.email;
+            } catch (error) {
+                console.error('Error details:', error);
+                alert('Failed to load user profile. Please login again.');
+            }
+        }
+
+        window.onload = fetchUserProfile;
+    </script>
+</body>
+</html>

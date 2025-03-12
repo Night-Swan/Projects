@@ -32,11 +32,11 @@
                 document.getElementById('csrf_token').value = data.csrf_token;
             })
             .catch(error => console.error('Error fetching CSRF token:', error));
-
+    
         document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
             const formData = new FormData(this);
-
+    
             fetch('/login', {
                 method: 'POST',
                 body: formData
@@ -45,8 +45,11 @@
             .then(data => {
                 const resultDiv = document.getElementById('result');
                 if (data.access_token) {
-                    localStorage.setItem('token', data.access_token);
-                    resultDiv.innerText = 'Login successful! Token: ' + data.access_token;
+                    localStorage.setItem('access_token', data.access_token);
+                    resultDiv.innerText = 'Login successful! Redirecting...';
+                    setTimeout(() => {
+                        window.location.href = '/user/profile.html';
+                    }, 1000);
                 } else {
                     resultDiv.innerText = 'Error: ' + data.error;
                 }

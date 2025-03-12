@@ -54,7 +54,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         
         if user and user.check_password(password):
-            access_token = create_access_token(identity=user.id)
+            access_token = create_access_token(identity=str(user.id))  
             return jsonify({'access_token': access_token}), 200
         return jsonify({"error": "Invalid credentials"}), 401
     return render_template('login.html', form=login_form)
@@ -70,3 +70,20 @@ def protected():
         'email': user.email
     }), 200
 
+
+@app.route("/user/profile.html", methods=['GET'])
+def serve_profile_page():
+    return render_template('profile.html')
+
+@app.route('/user/profile', methods=['GET'])
+@jwt_required()
+def user_profile():
+    current_user_id = get_jwt_identity()
+    print(f"Current user ID from token: {current_user_id}")  
+    user = User.query.get(current_user_id)
+    if user:
+        return jsonify({
+            "username": user.username,
+            "email": user.email
+        }), 200
+    return jsonify({"error": "User not found"}), 404
