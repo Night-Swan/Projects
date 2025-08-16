@@ -30,13 +30,13 @@
                 <input type="date" name="due_date" id="due_date">
             </div>
             <div class="form-group">
-                <label for="status">Status:</label>
-                <select name="status" id="status">
-                    <option value="Pending">Pending</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Completed">Completed</option>
-                </select>
-            </div>
+    <label for="status">Status:</label>
+    <select name="status" id="status">
+        <option value="todo">Pending</option>
+        <option value="in_progress">In Progress</option>
+        <option value="done">Completed</option>
+    </select>
+</div>
             <div class="form-group">
                 <button type="submit">Add Task</button>
             </div>
@@ -46,204 +46,207 @@
     </div>
     <script src="/static/nav.js"></script>
     <script>
-        // Fetch CSRF token
-        fetch('/get-csrf-token')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('csrf_token').value = data.csrf_token;
-            })
-            .catch(error => {
-                console.error('Error fetching CSRF token:', error);
-                document.getElementById('result').innerText = 'Error: ' + error.message;
-                document.getElementById('result').classList.add('error');
-            });
-
-        // Track editing state
-        let editingTaskId = null;
-
-        // Fetch and display tasks
-        async function fetchTasks() {
-            try {
-                const token = localStorage.getItem('access_token');
-                if (!token) throw new Error('No token found');
-                
-                const response = await fetch('/tasks', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                if (!response.ok) throw new Error('Failed to fetch tasks');
-                
-                const data = await response.json();
-                const taskList = document.getElementById('task-list');
-                const resultDiv = document.getElementById('result');
-                taskList.innerHTML = '';
-                resultDiv.innerText = '';
-                resultDiv.classList.remove('success', 'error');
-                
-                data.tasks.forEach(task => {
-                    const taskDiv = document.createElement('div');
-                    taskDiv.className = 'task-item';
-                    taskDiv.id = `task-${task.id}`;
-                    if (editingTaskId === task.id) {
-                        // Render edit form
-                        taskDiv.innerHTML = `
-                            <form class="task-edit-form" id="edit-form-${task.id}">
-                                <div class="form-group">
-                                    <label for="edit-title-${task.id}">Title:</label>
-                                    <input type="text" id="edit-title-${task.id}" value="${task.title}" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="edit-description-${task.id}">Description:</label>
-                                    <textarea id="edit-description-${task.id}">${task.description || ''}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="edit-due_date-${task.id}">Due Date:</label>
-                                    <input type="date" id="edit-due_date-${task.id}" value="${task.due_date || ''}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="edit-status-${task.id}">Status:</label>
-                                    <select id="edit-status-${task.id}">
-                                        <option value="Pending" ${task.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                                        <option value="In Progress" ${task.status === 'In Progress' ? 'selected' : ''}>In Progress</option>
-                                        <option value="Completed" ${task.status === 'Completed' ? 'selected' : ''}>Completed</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" onclick="saveTask(${task.id})">Save</button>
-                                    <button type="button" onclick="cancelEdit()">Cancel</button>
-                                </div>
-                            </form>
-                        `;
-                    } else {
-                        // Render display mode
-                        taskDiv.innerHTML = `
-                            <h3>${task.title}</h3>
-                            <p>${task.description || 'No description'}</p>
-                            <p>Due: ${task.due_date || 'No due date'}</p>
-                            <p>Status: ${task.status}</p>
-                            <button onclick="editTask(${task.id})">Update</button>
-                            <button onclick="deleteTask(${task.id})">Delete</button>
-                        `;
-                    }
-                    taskList.appendChild(taskDiv);
-                });
-            } catch (error) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerText = 'Error: ' + error.message;
-                resultDiv.classList.add('error');
-            }
-        }
-
-        // Switch to edit mode
-        function editTask(taskId) {
-            editingTaskId = taskId;
-            fetchTasks();
-        }
-
-        // Save task updates
-        async function saveTask(taskId) {
-            try {
-                const token = localStorage.getItem('access_token');
-                const title = document.getElementById(`edit-title-${taskId}`).value;
-                const description = document.getElementById(`edit-description-${taskId}`).value;
-                const due_date = document.getElementById(`edit-due_date-${taskId}`).value;
-                const status = document.getElementById(`edit-status-${taskId}`).value;
-                const resultDiv = document.getElementById('result');
-
-                const response = await fetch(`/tasks/${taskId}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ title, description, due_date, status })
-                });
-                const data = await response.json();
-                resultDiv.innerText = data.message || data.error;
-                resultDiv.classList.remove('success', 'error');
-                if (response.ok) {
-                    resultDiv.classList.add('success');
-                    editingTaskId = null;
-                    fetchTasks();
-                } else {
-                    resultDiv.classList.add('error');
-                }
-            } catch (error) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerText = 'Error: ' + error.message;
-                resultDiv.classList.add('error');
-            }
-        }
-
-        // Cancel editing
-        function cancelEdit() {
-            editingTaskId = null;
-            fetchTasks();
-        }
-
-        // Create a task
-        document.getElementById('task-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            const token = localStorage.getItem('access_token');
-            const resultDiv = document.getElementById('result');
-            
-            try {
-                const response = await fetch('/tasks', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(Object.fromEntries(formData))
-                });
-                const data = await response.json();
-                resultDiv.innerText = data.message || data.error;
-                resultDiv.classList.remove('success', 'error');
-                if (response.ok) {
-                    resultDiv.classList.add('success');
-                    this.reset();
-                    fetchTasks();
-                } else {
-                    resultDiv.classList.add('error');
-                }
-            } catch (error) {
-                resultDiv.innerText = 'Error: ' + error.message;
-                resultDiv.classList.add('error');
-            }
+    // Fetch CSRF token (unchanged)
+    fetch('/get-csrf-token')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('csrf_token').value = data.csrf_token;
+        })
+        .catch(error => {
+            console.error('Error fetching CSRF token:', error);
+            document.getElementById('result').innerText = 'Error: ' + error.message;
+            document.getElementById('result').classList.add('error');
         });
 
-        // Delete a task
-        async function deleteTask(taskId) {
-            try {
-                const token = localStorage.getItem('access_token');
-                const response = await fetch(`/tasks/${taskId}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                const data = await response.json();
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerText = data.message || data.error;
-                resultDiv.classList.remove('success', 'error');
-                if (response.ok) {
-                    resultDiv.classList.add('success');
-                    fetchTasks();
-                } else {
-                    resultDiv.classList.add('error');
+    // Track editing state (unchanged)
+    let editingTaskId = null;
+
+    // Status mapping for friendly display
+    const statusMap = {
+        'todo': 'Pending',
+        'in_progress': 'In Progress',
+        'done': 'Completed'
+    };
+
+    // Fetch and display tasks
+    async function fetchTasks() {
+        try {
+            const token = localStorage.getItem('access_token');
+            if (!token) throw new Error('No token found');
+            
+            const response = await fetch('/tasks', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
-            } catch (error) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.innerText = 'Error: ' + error.message;
+            });
+            if (!response.ok) throw new Error('Failed to fetch tasks');
+            
+            const data = await response.json();
+            const taskList = document.getElementById('task-list');
+            const resultDiv = document.getElementById('result');
+            taskList.innerHTML = '';
+            resultDiv.innerText = '';
+            resultDiv.classList.remove('success', 'error');
+            
+            data.tasks.forEach(task => {
+                const taskDiv = document.createElement('div');
+                taskDiv.className = 'task-item';
+                taskDiv.id = `task-${task.id}`;
+                if (editingTaskId === task.id) {
+                    // Render edit form (updated selected checks to match backend values)
+                    taskDiv.innerHTML = `
+                        <form class="task-edit-form" id="edit-form-${task.id}">
+                            <div class="form-group">
+                                <label for="edit-title-${task.id}">Title:</label>
+                                <input type="text" id="edit-title-${task.id}" value="${task.title}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-description-${task.id}">Description:</label>
+                                <textarea id="edit-description-${task.id}">${task.description || ''}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-due_date-${task.id}">Due Date:</label>
+                                <input type="date" id="edit-due_date-${task.id}" value="${task.due_date ? task.due_date.split('T')[0] : ''}">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-status-${task.id}">Status:</label>
+                                <select id="edit-status-${task.id}">
+                                    <option value="todo" ${task.status === 'todo' ? 'selected' : ''}>Pending</option>
+                                    <option value="in_progress" ${task.status === 'in_progress' ? 'selected' : ''}>In Progress</option>
+                                    <option value="done" ${task.status === 'done' ? 'selected' : ''}>Completed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" onclick="saveTask(${task.id})">Save</button>  <!-- Changed to type="button" to prevent form submit -->
+                                <button type="button" onclick="cancelEdit()">Cancel</button>
+                            </div>
+                        </form>
+                    `;
+                } else {
+                    // Render display mode (use friendly status)
+                    taskDiv.innerHTML = `
+                        <h3>${task.title}</h3>
+                        <p>${task.description || 'No description'}</p>
+                        <p>Due: ${task.due_date || 'No due date'}</p>
+                        <p>Status: ${statusMap[task.status] || task.status}</p>
+                        <button onclick="editTask(${task.id})">Update</button>
+                        <button onclick="deleteTask(${task.id})">Delete</button>
+                    `;
+                }
+                taskList.appendChild(taskDiv);
+            });
+        } catch (error) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = 'Error: ' + error.message;
+            resultDiv.classList.add('error');
+        }
+    }
+
+    function editTask(taskId) {
+        editingTaskId = taskId;
+        fetchTasks();
+    }
+
+    async function saveTask(taskId) {
+        try {
+            const token = localStorage.getItem('access_token');
+            const title = document.getElementById(`edit-title-${taskId}`).value;
+            const description = document.getElementById(`edit-description-${taskId}`).value;
+            const due_date = document.getElementById(`edit-due_date-${taskId}`).value;
+            const status = document.getElementById(`edit-status-${taskId}`).value;
+            const resultDiv = document.getElementById('result');
+
+            const response = await fetch(`/tasks/${taskId}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, description, due_date, status })
+            });
+            const data = await response.json();
+            resultDiv.innerText = data.message || data.error;
+            resultDiv.classList.remove('success', 'error');
+            if (response.ok) {
+                resultDiv.classList.add('success');
+                editingTaskId = null;
+                fetchTasks();
+            } else {
                 resultDiv.classList.add('error');
             }
+        } catch (error) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = 'Error: ' + error.message;
+            resultDiv.classList.add('error');
         }
+    }
 
-        // Load tasks on page load
-        window.onload = fetchTasks;
-    </script>
+    function cancelEdit() {
+        editingTaskId = null;
+        fetchTasks();
+    }
+
+    document.getElementById('task-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const token = localStorage.getItem('access_token');
+        const resultDiv = document.getElementById('result');
+        
+        try {
+            const response = await fetch('/tasks', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData))
+            });
+            const data = await response.json();
+            resultDiv.innerText = data.message || data.error;
+            resultDiv.classList.remove('success', 'error');
+            if (response.ok) {
+                resultDiv.classList.add('success');
+                this.reset();
+                fetchTasks();
+            } else {
+                resultDiv.classList.add('error');
+            }
+        } catch (error) {
+            resultDiv.innerText = 'Error: ' + error.message;
+            resultDiv.classList.add('error');
+        }
+    });
+
+    // Delete a task (unchanged)
+    async function deleteTask(taskId) {
+        try {
+            const token = localStorage.getItem('access_token');
+            const response = await fetch(`/tasks/${taskId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = data.message || data.error;
+            resultDiv.classList.remove('success', 'error');
+            if (response.ok) {
+                resultDiv.classList.add('success');
+                fetchTasks();
+            } else {
+                resultDiv.classList.add('error');
+            }
+        } catch (error) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = 'Error: ' + error.message;
+            resultDiv.classList.add('error');
+        }
+    }
+
+    // Load tasks on page load (unchanged)
+    window.onload = fetchTasks;
+</script>
 </body>
 </html>

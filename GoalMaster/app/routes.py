@@ -90,6 +90,8 @@ def create_task():
     title = data.get('title')
     description = data.get('description')
     due_date_str = data.get('due_date')
+    status_str = data.get('status', 'todo')
+    status = TaskStatus(status_str.lower())
 
     if not title:
         return jsonify({"error": "Title is required"}), 400
@@ -104,7 +106,7 @@ def create_task():
         title = title,
         description = description,
         due_date = due_date,
-        status = TaskStatus.TODO,
+        status = status,
         created_at = datetime.utcnow(),
         updated_at = datetime.utcnow()
     )
