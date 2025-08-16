@@ -1,14 +1,21 @@
-
 .container {
     display: grid; 
     place-content: center;
     background-color: blue;   
     margin-top: 10rem;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: white;
 }
 
 #form-container {
     display: grid;
-    gap: 1rem; /* Space between grid rows */
+    gap: 1rem;
     padding: 2rem;
     background-color: white;
     border-radius: 8px;
@@ -19,7 +26,7 @@
 
 .form-group {
     display: grid;
-    gap: 0.5rem; /* Space between label and input */
+    gap: 0.5rem;
 }
 
 label {
@@ -41,7 +48,7 @@ input:focus {
     box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
 }
 
-button {
+button, .button {
     padding: 0.75rem;
     background-color: #1877f2;
     color: white;
@@ -50,8 +57,49 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem;
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: #166fe5;
+}
+
+.task-item {
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.task-item h3 {
+    margin: 0 0 0.5rem 0;
+}
+
+.task-item p {
+    margin: 0.25rem 0;
+}
+
+.task-item button {
+    margin-right: 0.5rem;
+}
+
+textarea {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    margin-bottom: 1.5rem;
 }

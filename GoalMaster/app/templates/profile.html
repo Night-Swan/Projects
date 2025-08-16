@@ -4,12 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script> <!-- Add jwt-decode library -->
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 </head>
 <body>
-    <h1>User Profile</h1>
-    <p><strong>Username:</strong> <span id="username"></span></p>
-    <p><strong>Email:</strong> <span id="email"></span></p>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">GoalMaster</a>
+            <div class="nav-links" id="nav-links"></div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <p><strong>Username:</strong> <span id="username"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+        </div>
+    </div>
+    <script src="/static/nav.js"></script>
     <script>
         async function fetchUserProfile() {
             try {
@@ -18,17 +30,10 @@
                 if (!token) {
                     throw new Error('No token found');
                 }
-
-                const decodedToken = jwt_decode(token);
-                const csrfToken = decodedToken.csrf;
-                console.log('CSRF token from JWT:', csrfToken);
-
-                console.log('Sending request to /user/profile with token:', token);
                 const response = await fetch('/user/profile', {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'X-CSRF-TOKEN': csrfToken
+                        'Authorization': `Bearer ${token}`
                     }
                 });
                 console.log('Response status:', response.status);
@@ -45,7 +50,6 @@
                 alert('Failed to load user profile. Please login again.');
             }
         }
-
         window.onload = fetchUserProfile;
     </script>
 </body>

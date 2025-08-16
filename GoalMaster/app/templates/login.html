@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container" id="container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">GoalMaster</a>
+            <div class="nav-links" id="nav-links"></div>
+        </div>
+    </nav>
+    <div class="container">
         <h1>Login</h1>
-        <form id="login-form" method="post" action="/login">
+        <form id="login-form" class="form-container" method="post" action="/login">
             <input type="hidden" name="csrf_token" id="csrf_token">
-            <div>
+            <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username" size="32">
+                <input type="text" name="username" id="username" size="32" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" size="32">
+                <input type="password" name="password" id="password" size="32" required>
             </div>
-            <div>
+            <div class="form-group">
                 <button type="submit">Login</button>
             </div>
         </form>
         <div id="result"></div>
     </div>
-
+    <script src="/static/nav.js"></script>
     <script>
         fetch('/get-csrf-token')
             .then(response => response.json())
@@ -36,6 +43,7 @@
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            const resultDiv = document.getElementById('result');
     
             fetch('/login', {
                 method: 'POST',
@@ -43,20 +51,23 @@
             })
             .then(response => response.json())
             .then(data => {
-                const resultDiv = document.getElementById('result');
+                resultDiv.classList.remove('success', 'error');
                 if (data.access_token) {
                     localStorage.setItem('access_token', data.access_token);
                     resultDiv.innerText = 'Login successful! Redirecting...';
+                    resultDiv.classList.add('success');
                     setTimeout(() => {
                         window.location.href = '/user/profile.html';
                     }, 1000);
                 } else {
                     resultDiv.innerText = 'Error: ' + data.error;
+                    resultDiv.classList.add('error');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('result').innerText = 'An error occurred.';
+                resultDiv.innerText = 'An error occurred.';
+                resultDiv.classList.add('error');
             });
         });
     </script>

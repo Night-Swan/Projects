@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container" id="container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="brand">GoalMaster</a>
+            <div class="nav-links" id="nav-links"></div>
+        </div>
+    </nav>
+    <div class="container">
         <h1>Register</h1>
-        <form id="register-form" method="post" action="/register">
+        <form id="register-form" class="form-container" method="post" action="/register">
             <input type="hidden" name="csrf_token" id="csrf_token">
-            <div>
+            <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="username" id="username" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email">
+                <input type="email" name="email" id="email" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="repeat_password">Confirm Password:</label>
-                <input type="password" name="repeat_password" id="repeat_password">
+                <input type="password" name="repeat_password" id="repeat_password" required>
             </div>
-            <button type="submit">Register</button>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
         </form>
         <div id="result"></div>
     </div>
-
+    <script src="/static/nav.js"></script>
     <script>
         fetch('/get-csrf-token')
             .then(response => response.json())
@@ -43,6 +51,7 @@
         document.getElementById('register-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
+            const resultDiv = document.getElementById('result');
 
             fetch('/register', {
                 method: 'POST',
@@ -50,17 +59,20 @@
             })
             .then(response => response.json())
             .then(data => {
-                const resultDiv = document.getElementById('result');
+                resultDiv.classList.remove('success', 'error');
                 if (data.message) {
                     resultDiv.innerText = data.message;
+                    resultDiv.classList.add('success');
                 } else {
                     resultDiv.innerText = 'Error: ' + (data.error || 'Unknown error') + 
                         (data.details ? ' - ' + JSON.stringify(data.details) : '');
+                    resultDiv.classList.add('error');
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('result').innerText = 'An error occurred.';
+                resultDiv.innerText = 'An error occurred.';
+                resultDiv.classList.add('error');
             });
         });
     </script>
