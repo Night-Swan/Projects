@@ -126,12 +126,18 @@
                 } else {
                     // Render display mode (use friendly status)
                     taskDiv.innerHTML = `
+                        
                         <h3>${task.title}</h3>
+                        <div class="task-content">
                         <p>${task.description || 'No description'}</p>
+                        </div>
                         <p>Due: ${task.due_date || 'No due date'}</p>
                         <p>Status: ${statusMap[task.status] || task.status}</p>
+                        
+                        <div class="button-group">
                         <button onclick="editTask(${task.id})">Update</button>
                         <button onclick="deleteTask(${task.id})">Delete</button>
+                        </div>
                     `;
                 }
                 taskList.appendChild(taskDiv);

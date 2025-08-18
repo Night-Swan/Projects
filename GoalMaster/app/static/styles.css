@@ -89,6 +89,7 @@ h1 {
 p {
     font-size: 1.1rem;
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .form-container {
@@ -143,25 +144,70 @@ button:hover, .button:hover {
     background-color: #15325a;
 }
 
+#task-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+    grid-auto-rows: 300px;
+}
+
 .task-item {
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 0;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
+    max-width: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .task-item h3 {
     margin: 0 0 0.5rem;
     color: #1a3c6d;
+    text-align: center;
 }
 
 .task-item p {
     margin: 0.25rem 0;
+    background-color: #f1f3f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
 }
 
 .task-item button {
     margin-right: 0.5rem;
+}
+
+.task-item .button-group {
+    margin-top: auto; /* Push buttons to the bottom */
+    justify-content: center;
+}
+
+.task-content {
+    flex: 1; /* Allow content to take available space */
+    overflow-y: auto; /* Scrollbar for long descriptions */
+    border-radius: 4px;
+    background-color: #f1f3f5; /* Match the background color of the description */
+    border: 1px solid #e0e0e0;
+    min-height: 100px;
+    padding: 0.5rem; /* Add padding for better text appearance */
+}
+
+.task-content p {
+    border: none; /* Remove margin from description paragraph */
+    margin: 0;
+    background-color: transparent;
+}
+
+.task-item p:nth-child(3) { /* Due Date */
+    color: #2c5282; /* Blue for due date */
+}
+
+.task-item p:nth-child(4) { /* Status */
+    color: #2f855a; /* Green for status */
 }
 
 .profile-info {
@@ -211,4 +257,29 @@ button:hover, .button:hover {
         margin: 5rem 1rem 1rem;
         padding: 1rem;
     }
+}
+
+
+
+/* Only showing relevant sections for brevity */
+#navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1rem; /* Space between paragraph and button-group */
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    width: auto; /* Changed from 100% to allow natural button width */
+    flex-wrap: nowrap; /* Prevent buttons from wrapping to new lines */
+}
+
+/* Ensure buttons within button-group are styled consistently */
+.button-group .button {
+    flex: 0 0 auto; /* Prevent buttons from stretching */
 }
