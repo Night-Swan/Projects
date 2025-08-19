@@ -36,6 +36,13 @@
         <option value="in_progress">In Progress</option>
         <option value="done">Completed</option>
     </select>
+
+    <label for="priority">Priority:</label>
+    <select name="priority" id="priority">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+    </select>
 </div>
             <div class="form-group">
                 <button type="submit">Add Task</button>
@@ -67,6 +74,12 @@
         'in_progress': 'In Progress',
         'done': 'Completed'
     };
+
+    const priorityMap = {
+        'high': 'High',
+        'medium': 'Medium',
+        'low': 'Low'
+    }
 
     // Fetch and display tasks
     async function fetchTasks() {
@@ -118,6 +131,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="edit-priority-${task.id}">Priority:</label>
+                                <select id="edit-priority-${task.id}">
+                                    <option value="todo" ${task.priority === 'high' ? 'selected' : ''}>High</option>
+                                    <option value="in_progress" ${task.priority === 'medium' ? 'selected' : ''}>Medium</option>
+                                    <option value="done" ${task.priority === 'low' ? 'selected' : ''}>Low</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <button type="button" onclick="saveTask(${task.id})">Save</button>  <!-- Changed to type="button" to prevent form submit -->
                                 <button type="button" onclick="cancelEdit()">Cancel</button>
                             </div>
@@ -133,7 +154,7 @@
                         </div>
                         <p>Due: ${task.due_date || 'No due date'}</p>
                         <p>Status: ${statusMap[task.status] || task.status}</p>
-                        
+                        <p>Priority: ${priorityMap[task.priority] || task.priority}</p>
                         <div class="button-group">
                         <button onclick="editTask(${task.id})">Update</button>
                         <button onclick="deleteTask(${task.id})">Delete</button>
@@ -161,6 +182,7 @@
             const description = document.getElementById(`edit-description-${taskId}`).value;
             const due_date = document.getElementById(`edit-due_date-${taskId}`).value;
             const status = document.getElementById(`edit-status-${taskId}`).value;
+            const priority = document.getElementById(`edit-priority-${taskId}`).value;
             const resultDiv = document.getElementById('result');
 
             const response = await fetch(`/tasks/${taskId}`, {
@@ -169,7 +191,7 @@
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ title, description, due_date, status })
+                body: JSON.stringify({ title, description, due_date, status, priority })
             });
             const data = await response.json();
             resultDiv.innerText = data.message || data.error;

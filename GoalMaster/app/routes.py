@@ -1,7 +1,7 @@
 from app import app, db
 from flask import render_template, jsonify, url_for, redirect, request
 from .forms import RegistrationForm, LoginForm
-from .models import User, Task, TaskStatus
+from .models import User, Task, TaskStatus, TaskPriority
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from flask_wtf.csrf import generate_csrf
 from datetime import datetime
@@ -92,6 +92,8 @@ def create_task():
     due_date_str = data.get('due_date')
     status_str = data.get('status', 'todo')
     status = TaskStatus(status_str.lower())
+    priority_str = data.get('priority', 'high')
+    priority = TaskPriority(priority_str.lower())
 
     if not title:
         return jsonify({"error": "Title is required"}), 400
@@ -107,6 +109,7 @@ def create_task():
         description = description,
         due_date = due_date,
         status = status,
+        priority = priority,
         created_at = datetime.utcnow(),
         updated_at = datetime.utcnow()
     )
@@ -128,6 +131,7 @@ def get_tasks():
         "description": task.description,
         "due_date": task.due_date.isoformat() if task.due_date else None,
         "status": task.status.value,
+        "priority": task.priority.value,
         "created_at": task.created_at.isoformat(),
         "updated_at": task.updated_at.isoformat()
     } for task in tasks]
@@ -161,6 +165,12 @@ def update_task(task_id):
         except ValueError:
             return jsonify({"error": "Invalid status. Use TODO, IN_PROGRESS, or DONE"}), 400
     
+    if 'priority' in data:
+        try:
+            task.priority = TaskPriority(data['priority'])
+        except ValueError:
+            return jsonify({"error": "Invalid priority. Use TODO, IN_PROGRESS, or DONE"}), 400
+        
     task.updated_at = datetime.utcnow()
     db.session.commit()
     

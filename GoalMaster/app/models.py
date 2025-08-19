@@ -10,6 +10,11 @@ class TaskStatus(Enum):
     IN_PROGRESS = "in_progress"
     DONE = "done"
 
+class TaskPriority(Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -38,5 +43,6 @@ class Task(db.Model):
     description: so.Mapped[str] = so.mapped_column(sa.String(200))
     due_date: so.Mapped[datetime] = so.mapped_column(sa.DateTime)
     status: so.Mapped[TaskStatus] = so.mapped_column(sa.Enum(TaskStatus))
+    priority: so.Mapped[TaskPriority] = so.mapped_column(sa.Enum(TaskPriority))
     created_at: so.Mapped[datetime] = so.mapped_column(sa.DateTime)
     updated_at: so.Mapped[datetime] = so.mapped_column(sa.DateTime)

@@ -41,6 +41,7 @@ body {
 .navbar .nav-links {
     display: flex;
     gap: 1.5rem;
+    align-items: center; /* Ensure vertical alignment of links and button */
 }
 
 .navbar .nav-link {
@@ -55,19 +56,25 @@ body {
     color: #a8d5ff;
 }
 
+.navbar .nav-link.active {
+    color: #a8d5ff;
+    border-bottom: 2px solid #a8d5ff; /* Highlight for active link */
+}
+
 .navbar .logout-button {
-    background-color: #dc3545;
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    text-decoration: none;
     font-size: 1rem;
+    font-weight: 500;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: color 0.3s;
+    padding: 0; /* Remove padding to match nav-link */
 }
 
 .navbar .logout-button:hover {
-    background-color: #c82333;
+    color: #a8d5ff;
 }
 
 .container {
@@ -149,7 +156,7 @@ button:hover, .button:hover {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-top: 1rem;
-    grid-auto-rows: 300px;
+    grid-auto-rows: 350px;
 }
 
 .task-item {
@@ -210,6 +217,10 @@ button:hover, .button:hover {
     color: #2f855a; /* Green for status */
 }
 
+.task-item p:nth-child(5) { /* Status */
+    color: #ac0f85; /* Green for status */
+}
+
 .profile-info {
     background-color: #f9f9f9;
     padding: 1.5rem;
@@ -258,8 +269,6 @@ button:hover, .button:hover {
         padding: 1rem;
     }
 }
-
-
 
 /* Only showing relevant sections for brevity */
 #navigation {
